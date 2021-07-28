@@ -59,7 +59,12 @@ export const MainForm = () => {
                 handleChange={handleChange}
               />
 
-              <ProfileImageInput />
+              <ProfileImageInput
+                name="personalInfoPhoto"
+                value={form.personalInfoPhoto}
+                handleChange={handleChange}
+                placeHolder="Eligir fotografía"
+              />
             </div>
           </SubSectionForm>
 

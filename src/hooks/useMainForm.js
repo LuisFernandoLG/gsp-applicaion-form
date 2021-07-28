@@ -5,6 +5,7 @@ const initialForm = {
   personalInfoLastName: "",
   personalInfoSecondLastName: "",
   personalInfoGender: "",
+  personalInfoPhoto: "",
   personalInfoBday: "",
   personalInfoEmail: "",
   personalInfoPhone: "",

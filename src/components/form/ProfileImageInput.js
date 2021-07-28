@@ -10,7 +10,7 @@ export const ProfileImageInput = ({
   placeHolder,
 }) => {
   const [profileImage, setProfileImage] = useState(null);
-  const [profileImageURL, setProfileImageURL] = useState(null);
+  const [profileImageURL, setProfileImageURL] = useState(null || value);
 
   const handleFileSelected = (e) => {
     setProfileImage(e.target.files[0]);
@@ -32,20 +32,23 @@ export const ProfileImageInput = ({
     };
   }, [profileImage]);
 
+  useEffect(() => {
+    handleChange({ target: { name, value: profileImageURL } });
+  }, [profileImageURL]);
+
   return (
     <ProfileImageInputStyled>
-      <label htmlFor="img">
+      <label htmlFor="image-profile">
         <PhotoPreview>
-          <img src={profileImage ? profileImageURL : image} alt="" />
+          <img src={profileImageURL ? profileImageURL : image} alt="" />
         </PhotoPreview>
-
-        <span>Elegir Fotografía</span>
+        <span>{placeHolder}</span>
       </label>
       <input
         type="file"
         accept="image/png, image/jpeg"
-        name="img"
-        id="img"
+        name={name}
+        id="image-profile"
         onChange={handleFileSelected}
       />
     </ProfileImageInputStyled>
