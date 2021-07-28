@@ -1,7 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import image from "../../img/cameraPhoto.svg";
-// import image from "../../img/chuy2.jpg";
-// import image from "../../img/cameraPhoto.svg";
 import styled from "styled-components";
 import { Wrapper } from "../Wrapper";
 

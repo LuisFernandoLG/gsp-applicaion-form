@@ -121,8 +121,6 @@ export const MainForm = () => {
           </SubSectionForm>
         </SectionForm>
 
-        {/*  */}
-
         <SectionForm flex directionColumn>
           <h2>Información del padre</h2>
           <SubSectionForm flex wrap="true">
@@ -569,11 +567,13 @@ export const MainForm = () => {
   );
 };
 
-const FormStyled = styled.form``;
+const FormStyled = styled.form`
+  margin-top: 3.125rem;
+`;
 
 const Sections = styled(Wrapper)`
   h2 {
-    margin-top: 3.125rem;
+    text-align: center;
     font-size: 30px;
     width: 100%;
   }
@@ -581,7 +581,10 @@ const Sections = styled(Wrapper)`
 
 const SectionForm = styled(Wrapper)`
   gap: 3.125rem;
-  margin: 3.125rem 0 0 3.125rem;
+  &:not(:first-child) {
+    margin-top: 10.125rem;
+  }
+
   h2 {
     font-size: 30px;
     text-align: center;
@@ -599,7 +602,6 @@ const SubSectionForm = styled(Wrapper)`
     flex-basis: 20%;
     @media screen and (max-width: 50rem) {
       flex-basis: 100%;
-      /* background: red; */
     }
   }
   .questions {
@@ -651,11 +653,6 @@ const CardItem = styled(Wrapper)`
   border-radius: 1rem;
 
   background: ${({ theme: { colors } }) => colors.primaryColor};
-
-  /* &:not(:last-child) {
-    border-bottom: 2px solid ${({ theme: { colors } }) => colors.tertiaryColor};
-  }
-   */
 `;
 
 const Divider = styled.div`
