@@ -21,7 +21,7 @@ const PrivacyPolicyStyled = styled(Wrapper)`
   line-height: 2;
 
   font-size: 1rem;
-  padding: 1rem;
+
   text-align: center;
 
   a {

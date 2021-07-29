@@ -4,6 +4,8 @@ import PrivacyPolicy from "../../PrivacyPolicy";
 import { RadioGroupForm } from "../RadioGroupForm";
 import { Wrapper } from "../../Wrapper";
 import { SubmitButton } from "../../styleComponents/ButtonsStyled";
+import styled from "styled-components";
+import promisePerson from "../../../img/promise.svg";
 
 export const SignAcceptSection = ({ form, handleChange }) => {
   return (
@@ -23,11 +25,23 @@ export const SignAcceptSection = ({ form, handleChange }) => {
             />
           </div>
         </SubSectionForm>
+        <PromisePersonImage>
+          <img src={promisePerson} alt="promise accept" />
+        </PromisePersonImage>
+        <PrivacyPolicy />
         <Wrapper flex justifyContent="center" alignItems="center">
           <SubmitButton type="submit">Envíar</SubmitButton>
         </Wrapper>
-        <PrivacyPolicy />
       </SectionForm>
     </>
   );
 };
+
+const PromisePersonImage = styled.div`
+  height: 10rem;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+`;
