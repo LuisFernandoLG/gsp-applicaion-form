@@ -10,6 +10,7 @@ const SectionSlider = ({
   SectionForm,
   form,
   handleChange,
+  handleBlur,
   handleChangeListElements,
   addNewListElements,
   handleDeleteFromListElements,
@@ -36,6 +37,7 @@ const SectionSlider = ({
       <SectionForm
         form={form}
         handleChange={handleChange}
+        handleBlur={handleBlur}
         handleDeleteFromListElements={handleDeleteFromListElements}
         addNewListElements={addNewListElements}
         handleChangeListElements={handleChangeListElements}

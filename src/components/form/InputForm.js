@@ -1,7 +1,14 @@
 import { useRef } from "react";
 import styled from "styled-components";
 //
-export const InputForm = ({ type, placeHolder, name, value, handleChange }) => {
+export const InputForm = ({
+  type,
+  placeHolder,
+  name,
+  value,
+  handleChange,
+  handleBlur,
+}) => {
   const inputRef = useRef(null);
 
   const handleFocus = () => {
@@ -17,6 +24,7 @@ export const InputForm = ({ type, placeHolder, name, value, handleChange }) => {
         name={name}
         id={name}
         ref={inputRef}
+        onBlur={handleBlur}
       />
       <label htmlFor={name}>{placeHolder}</label>
       <div className="bar"></div>

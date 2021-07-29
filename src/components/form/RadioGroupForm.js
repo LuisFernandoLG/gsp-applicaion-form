@@ -7,6 +7,7 @@ export const RadioGroupForm = ({
   options,
   value,
   handleChange,
+  handleBlur,
 }) => {
   return (
     <RadioGroupFormStyled flex gap="1rem" directionColumn>
@@ -29,6 +30,7 @@ export const RadioGroupForm = ({
                 onChange={handleChange}
                 value={option}
                 defaultChecked={value === option}
+                onBlur={handleBlur}
               />
             </Wrapper>
           );

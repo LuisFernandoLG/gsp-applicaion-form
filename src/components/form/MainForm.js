@@ -12,6 +12,7 @@ export const MainForm = () => {
     handleChangeListElements,
     addNewListElements,
     handleDeleteFromListElements,
+    handleBlur,
   } = useMainForm();
 
   const {
@@ -35,6 +36,7 @@ export const MainForm = () => {
           numSectionForm={numSectionForm}
           form={form}
           handleChange={handleChange}
+          handleBlur={handleBlur}
           handleDeleteFromListElements={handleDeleteFromListElements}
           addNewListElements={addNewListElements}
           handleChangeListElements={handleChangeListElements}

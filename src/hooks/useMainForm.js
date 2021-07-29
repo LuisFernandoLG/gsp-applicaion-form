@@ -67,7 +67,6 @@ const initialForm = {
   signAccept: "",
 };
 
-// localStorage.clear();
 const initialLocalStorageForm = localStorage.getItem("gspForm")
   ? JSON.parse(localStorage.getItem("gspForm"))
   : initialForm;
@@ -118,13 +117,13 @@ export const useMainForm = () => {
     e.preventDefault();
   };
 
-  // const handleInputRadioChange = ()=>{
-
-  // }
-
-  useEffect(() => {
+  const handleBlur = () => {
+    console.log("onBlur");
     localStorage.setItem("gspForm", JSON.stringify(form));
-  }, [form]);
+  };
+
+  // useEffect(() => {
+  // }, [form]);
 
   return {
     form,
@@ -134,5 +133,6 @@ export const useMainForm = () => {
     handleChangeListElements,
     addNewListElements,
     handleDeleteFromListElements,
+    handleBlur,
   };
 };

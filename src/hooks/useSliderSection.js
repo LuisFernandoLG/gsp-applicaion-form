@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { AcademicBackgroundSection } from "../components/form/sections/AcademicBackgroundSection";
 import { EconomicStatusSection } from "../components/form/sections/EconomicStatusSection";
 import { ExtracurricularSection } from "../components/form/sections/ExtracurricularSection";
 import { FatherSection } from "../components/form/sections/FatherSection";
@@ -10,6 +11,7 @@ const initialSections = [
   PersonalSection,
   FatherSection,
   MotherSection,
+  AcademicBackgroundSection,
   EconomicStatusSection,
   ExtracurricularSection,
   SignAcceptSection,

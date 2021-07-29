@@ -13,6 +13,7 @@ export const ExtracurricularSection = ({
   addNewListElements,
   handleDeleteFromListElements,
   handleChangeListElements,
+  handleBlur,
 }) => {
   return (
     <SectionForm flex directionColumn>
@@ -45,6 +46,7 @@ export const ExtracurricularSection = ({
                       e
                     )
                   }
+                  handleBlur={handleBlur}
                 />
 
                 <InputForm
@@ -59,6 +61,7 @@ export const ExtracurricularSection = ({
                       e
                     )
                   }
+                  handleBlur={handleBlur}
                 />
                 <InputForm
                   type="number"
@@ -72,6 +75,7 @@ export const ExtracurricularSection = ({
                       e
                     )
                   }
+                  handleBlur={handleBlur}
                 />
                 <InputForm
                   type="text"
@@ -85,6 +89,7 @@ export const ExtracurricularSection = ({
                       e
                     )
                   }
+                  handleBlur={handleBlur}
                 />
               </CardItem>
             );

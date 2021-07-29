@@ -5,7 +5,7 @@ import { RadioGroupForm } from "../RadioGroupForm";
 import { ProfileImageInput } from "../ProfileImageInput";
 
 import { InputForm } from "../InputForm";
-export const PersonalSection = ({ form, handleChange }) => {
+export const PersonalSection = ({ form, handleChange, handleBlur }) => {
   return (
     <SectionForm flex directionColumn>
       <h2>Información de perfil</h2>
@@ -18,6 +18,7 @@ export const PersonalSection = ({ form, handleChange }) => {
             value={form.personalInfoName}
             name="personalInfoName"
             handleChange={handleChange}
+            handleBlur={handleBlur}
           />
           <InputForm
             type="text"
@@ -25,6 +26,7 @@ export const PersonalSection = ({ form, handleChange }) => {
             value={form.personalInfoLastName}
             name="personalInfoLastName"
             handleChange={handleChange}
+            handleBlur={handleBlur}
           />
           <InputForm
             type="text"
@@ -32,6 +34,7 @@ export const PersonalSection = ({ form, handleChange }) => {
             value={form.personalInfoSecondLastName}
             name="personalInfoSecondLastName"
             handleChange={handleChange}
+            handleBlur={handleBlur}
           />
           <RadioGroupForm
             options={["masculino", "femenino"]}
@@ -39,6 +42,7 @@ export const PersonalSection = ({ form, handleChange }) => {
             placeholder="Sexo"
             name="personalInfoGender"
             handleChange={handleChange}
+            handleBlur={handleBlur}
           />
           <InputForm
             type="date"
@@ -46,13 +50,15 @@ export const PersonalSection = ({ form, handleChange }) => {
             value={form.personalInfoBday}
             name="personalInfoBday"
             handleChange={handleChange}
+            handleBlur={handleBlur}
           />
 
           <ProfileImageInput
             name="personalInfoPhoto"
             value={form.personalInfoPhoto}
-            handleChange={handleChange}
             placeHolder="Eligir fotografía"
+            handleChange={handleChange}
+            handleBlur={handleBlur}
           />
         </div>
       </SubSectionForm>
@@ -66,6 +72,7 @@ export const PersonalSection = ({ form, handleChange }) => {
             value={form.personalInfoEmail}
             name="personalInfoEmail"
             handleChange={handleChange}
+            handleBlur={handleBlur}
           />
           <InputForm
             type="number"
@@ -73,6 +80,7 @@ export const PersonalSection = ({ form, handleChange }) => {
             name="personalInfoPhone"
             value={form.personalInfoPhone}
             handleChange={handleChange}
+            handleBlur={handleBlur}
           />
         </div>
       </SubSectionForm>
@@ -86,6 +94,7 @@ export const PersonalSection = ({ form, handleChange }) => {
             name="personalInfoCity"
             value={form.personalInfoCity}
             handleChange={handleChange}
+            handleBlur={handleBlur}
           />
 
           <InputForm
@@ -94,6 +103,7 @@ export const PersonalSection = ({ form, handleChange }) => {
             name="personalInfoSuburban"
             value={form.personalInfoSuburban}
             handleChange={handleChange}
+            handleBlur={handleBlur}
           />
 
           <InputForm
@@ -102,6 +112,7 @@ export const PersonalSection = ({ form, handleChange }) => {
             name="personalInfoStreet"
             value={form.personalInfoStreet}
             handleChange={handleChange}
+            handleBlur={handleBlur}
           />
 
           <InputForm
@@ -110,6 +121,7 @@ export const PersonalSection = ({ form, handleChange }) => {
             name="personalInfoCP"
             value={form.personalInfoCP}
             handleChange={handleChange}
+            handleBlur={handleBlur}
           />
         </div>
       </SubSectionForm>

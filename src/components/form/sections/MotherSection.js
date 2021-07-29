@@ -2,7 +2,7 @@ import { SectionForm } from "../../styleComponents/SectionForm";
 import { SubSectionForm } from "../../styleComponents/SubSectionForm";
 
 import { InputForm } from "../InputForm";
-export const MotherSection = ({ form, handleChange }) => {
+export const MotherSection = ({ form, handleChange, handleBlur }) => {
   return (
     <SectionForm flex directionColumn>
       <h2>Información de la madre</h2>
@@ -15,6 +15,7 @@ export const MotherSection = ({ form, handleChange }) => {
             name="motherInfoName"
             value={form.motherInfoName}
             handleChange={handleChange}
+            handleBlur={handleBlur}
           />
 
           <InputForm
@@ -23,6 +24,7 @@ export const MotherSection = ({ form, handleChange }) => {
             name="motherInfoLastName"
             value={form.motherInfoLastName}
             handleChange={handleChange}
+            handleBlur={handleBlur}
           />
 
           <InputForm
@@ -31,6 +33,7 @@ export const MotherSection = ({ form, handleChange }) => {
             name="motherInfoSecondLastName"
             value={form.motherInfoSecondLastName}
             handleChange={handleChange}
+            handleBlur={handleBlur}
           />
         </div>
       </SubSectionForm>
@@ -44,6 +47,7 @@ export const MotherSection = ({ form, handleChange }) => {
             name="motherInfoSecondLastJob"
             value={form.motherInfoSecondLastJob}
             handleChange={handleChange}
+            handleBlur={handleBlur}
           />
 
           <InputForm
@@ -52,6 +56,7 @@ export const MotherSection = ({ form, handleChange }) => {
             name="motherInfoSecondFormalIncome"
             value={form.motherInfoSecondFormalIncome}
             handleChange={handleChange}
+            handleBlur={handleBlur}
           />
           <InputForm
             type="number"
@@ -59,6 +64,7 @@ export const MotherSection = ({ form, handleChange }) => {
             name="motherInfoSecondInformalIncome"
             value={form.motherInfoSecondInformalIncome}
             handleChange={handleChange}
+            handleBlur={handleBlur}
           />
         </div>
       </SubSectionForm>

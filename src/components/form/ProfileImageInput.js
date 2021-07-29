@@ -8,6 +8,7 @@ export const ProfileImageInput = ({
   value,
   handleChange,
   placeHolder,
+  handleBlur,
 }) => {
   const [profileImage, setProfileImage] = useState(null);
   const [profileImageURL, setProfileImageURL] = useState(null || value);
@@ -50,6 +51,7 @@ export const ProfileImageInput = ({
         name={name}
         id="image-profile"
         onChange={handleFileSelected}
+        onBlur={handleBlur}
       />
     </ProfileImageInputStyled>
   );

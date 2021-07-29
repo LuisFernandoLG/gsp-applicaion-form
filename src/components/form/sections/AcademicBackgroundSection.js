@@ -3,7 +3,11 @@ import { SubSectionForm } from "../../styleComponents/SubSectionForm";
 
 import { InputForm } from "../InputForm";
 
-export const AcademicBackgroundSection = ({ form, handleChange }) => {
+export const AcademicBackgroundSection = ({
+  form,
+  handleChange,
+  handleBlur,
+}) => {
   return (
     <SectionForm flex directionColumn>
       <h2>Historial academico</h2>
@@ -16,6 +20,7 @@ export const AcademicBackgroundSection = ({ form, handleChange }) => {
             name="academicBackgroundSecondarySchoolName"
             value={form.academicBackgroundSecondarySchoolName}
             handleChange={handleChange}
+            handleBlur={handleBlur}
           />
           <InputForm
             type="number"
@@ -23,6 +28,7 @@ export const AcademicBackgroundSection = ({ form, handleChange }) => {
             name="academicBackgroundSecondarySchoolGrades"
             value={form.academicBackgroundSecondarySchoolGrades}
             handleChange={handleChange}
+            handleBlur={handleBlur}
           />
           <InputForm
             type="text"
@@ -30,6 +36,7 @@ export const AcademicBackgroundSection = ({ form, handleChange }) => {
             name="academicBackgroundSecondarySchoolAddress"
             value={form.academicBackgroundSecondarySchoolAddress}
             handleChange={handleChange}
+            handleBlur={handleBlur}
           />
         </div>
       </SubSectionForm>
@@ -43,6 +50,7 @@ export const AcademicBackgroundSection = ({ form, handleChange }) => {
             name="academicBackgroundHighySchoolName"
             value={form.academicBackgroundHighySchoolName}
             handleChange={handleChange}
+            handleBlur={handleBlur}
           />
           <InputForm
             type="number"
@@ -50,6 +58,7 @@ export const AcademicBackgroundSection = ({ form, handleChange }) => {
             name="academicBackgroundHighySchoolGrades"
             value={form.academicBackgroundHighySchoolGrades}
             handleChange={handleChange}
+            handleBlur={handleBlur}
           />
           <InputForm
             type="text"
@@ -57,6 +66,7 @@ export const AcademicBackgroundSection = ({ form, handleChange }) => {
             name="academicBackgroundHighySchoolYears"
             value={form.academicBackgroundHighySchoolYears}
             handleChange={handleChange}
+            handleBlur={handleBlur}
           />
 
           <InputForm
@@ -65,6 +75,7 @@ export const AcademicBackgroundSection = ({ form, handleChange }) => {
             name="academicBackgroundHighySchoolAddress"
             value={form.academicBackgroundHighySchoolAddress}
             handleChange={handleChange}
+            handleBlur={handleBlur}
           />
         </div>
       </SubSectionForm>

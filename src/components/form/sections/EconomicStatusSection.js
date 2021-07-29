@@ -4,7 +4,7 @@ import { SubSectionForm } from "../../styleComponents/SubSectionForm";
 import { InputForm } from "../InputForm";
 import { RadioGroupForm } from "../RadioGroupForm";
 
-export const EconomicStatusSection = ({ form, handleChange }) => {
+export const EconomicStatusSection = ({ form, handleChange, handleBlur }) => {
   return (
     <SectionForm flex directionColumn>
       <h2>Estado económico</h2>
@@ -17,6 +17,7 @@ export const EconomicStatusSection = ({ form, handleChange }) => {
             name="economicStatusNumOfPeopleLivingAtHome"
             value={form.economicStatusNumOfPeopleLivingAtHome}
             handleChange={handleChange}
+            handleBlur={handleBlur}
           />
 
           <InputForm
@@ -25,6 +26,7 @@ export const EconomicStatusSection = ({ form, handleChange }) => {
             name="economicStatusNumOfMembersFamily"
             value={form.economicStatusNumOfMembersFamily}
             handleChange={handleChange}
+            handleBlur={handleBlur}
           />
 
           <RadioGroupForm
@@ -33,6 +35,7 @@ export const EconomicStatusSection = ({ form, handleChange }) => {
             value={form.economicStatusHasOwnHouse}
             name="economicStatusHasOwnHouse"
             handleChange={handleChange}
+            handleBlur={handleBlur}
             // value={"masculino"}
           />
           <RadioGroupForm
@@ -41,6 +44,7 @@ export const EconomicStatusSection = ({ form, handleChange }) => {
             value={form.economicStatusHasCar}
             name="economicStatusHasCar"
             handleChange={handleChange}
+            handleBlur={handleBlur}
             // value={"masculino"}
           />
 
@@ -50,6 +54,7 @@ export const EconomicStatusSection = ({ form, handleChange }) => {
             value={form.economicStatusHasBankAccount}
             name="economicStatusHasBankAccount"
             handleChange={handleChange}
+            handleBlur={handleBlur}
           />
 
           <RadioGroupForm
@@ -58,6 +63,7 @@ export const EconomicStatusSection = ({ form, handleChange }) => {
             value={form.economicStatusHasInternet}
             name="economicStatusHasInternet"
             handleChange={handleChange}
+            handleBlur={handleBlur}
           />
         </div>
       </SubSectionForm>
@@ -71,6 +77,7 @@ export const EconomicStatusSection = ({ form, handleChange }) => {
             value={form.economicStatusHasJob}
             name="economicStatusHasJob"
             handleChange={handleChange}
+            handleBlur={handleBlur}
           />
 
           <InputForm
@@ -79,6 +86,7 @@ export const EconomicStatusSection = ({ form, handleChange }) => {
             name="economicStatusTimeLivingCabo"
             value={form.economicStatusTimeLivingCabo}
             handleChange={handleChange}
+            handleBlur={handleBlur}
           />
         </div>
       </SubSectionForm>
