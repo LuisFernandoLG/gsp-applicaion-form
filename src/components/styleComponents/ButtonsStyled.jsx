@@ -26,7 +26,6 @@ export const DeleteButton = styled(buttonStyled)`
 
 export const SubmitButton = styled(buttonStyled)`
   padding: 1rem 2rem;
-  /* margin: 1.875rem auto; */
   color: ${({ theme: { colors } }) => colors.primaryColor};
   background: ${({ theme: { colors } }) => colors.secondaryColor};
 `;

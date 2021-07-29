@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Wrapper } from "../Wrapper";
 import { useHistory } from "react-router-dom";
 import { routes } from "../../helpers/routes";
+import { SecondaryButton } from "../styleComponents/ButtonsStyled";
 
 const HomePage = () => {
   let history = useHistory();
@@ -23,6 +24,9 @@ const HomePage = () => {
         <img src={formImage} alt="form" />
       </div>
       <GoButton onClick={goToForm}>Ir a la aplicación</GoButton>
+      <BackHomeButton as="a" href="https://confident-wing-21f7a8.netlify.app">
+        Volver a GSP
+      </BackHomeButton>
     </WelcomeCard>
   );
 };
@@ -44,5 +48,7 @@ const GoButton = styled.button`
   background: ${({ theme: { colors } }) => colors.secondaryColor};
   color: ${({ theme: { colors } }) => colors.primaryColor};
 `;
+
+const BackHomeButton = styled(SecondaryButton)``;
 
 export default HomePage;
