@@ -7,4 +7,5 @@ export const Wrapper = styled.div`
   gap: ${({ gap }) => gap};
   justify-content: ${({ justifyContent }) => justifyContent};
   align-items: ${({ alignItems }) => alignItems};
+  align-content: ${({ alignContent }) => alignContent};
 `;

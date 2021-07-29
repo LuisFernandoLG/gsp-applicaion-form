@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import styled from "styled-components";
-
-const InputForm = ({ type, placeHolder, name, value, handleChange }) => {
+//
+export const InputForm = ({ type, placeHolder, name, value, handleChange }) => {
   const inputRef = useRef(null);
 
   const handleFocus = () => {
@@ -23,8 +23,6 @@ const InputForm = ({ type, placeHolder, name, value, handleChange }) => {
     </InputStyled>
   );
 };
-
-export default InputForm;
 
 const InputStyled = styled.div`
   box-shadow: ${({ theme: { colors } }) => colors.boxShadowLight};
