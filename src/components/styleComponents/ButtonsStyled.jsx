@@ -25,33 +25,35 @@ export const DeleteButton = styled(buttonStyled)`
 `;
 
 export const SubmitButton = styled(buttonStyled)`
-  padding: 1rem 2rem;
+  padding: 1.5rem 2.5rem;
+  font-size: 1rem;
+  font-weight: 600;
   color: ${({ theme: { colors } }) => colors.primaryColor};
-  background: ${({ theme: { colors } }) => colors.secondaryColor};
+  background: ${({ theme: { colors } }) => colors.color1};
 `;
 
 
 export const NavigationBarButton = styled(buttonStyled)`
-  padding: 1rem 2rem;
+  padding: 1.2em 1.5em;
 
-  margin: 1.875rem auto;
+  margin: 1.875em auto;
   color: ${({ theme: { colors } }) => colors.primaryColor};
   background: ${({ theme: { colors } }) => colors.secondaryColor};
 
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 1.2em;
 `;
 
 
 export const SecondaryButton = styled(buttonStyled)`
-  padding: 1rem 2rem;
+  padding: 1.5em 1.5em;
 
   margin: 1.875rem auto;
   color: ${({ theme: { colors } }) => colors.tertiaryColor};
   background: ${({ theme: { colors } }) => colors.primaryColor};
 
-  font-weight: 600;
-  font-size: 1rem;
+  font-weight: 800;
+  font-size: 1.2em;
 `;
 
 

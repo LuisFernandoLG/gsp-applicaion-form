@@ -19,14 +19,12 @@ export const GlobalStyles = createGlobalStyle`
     }
     
     body{
-        /* font-family: helvetica; */
+        
         font-family: "Montserrat", sans-serif;
         width: 90%;
         max-width: 1400px;
         margin: 1.25rem auto;
         margin-bottom: 5.125rem;
-
-        /* background: ${({ theme: { colors } }) => colors.primaryColor}; */
     }
     
     input[type="date"]{
@@ -51,8 +49,9 @@ export const GlobalStyles = createGlobalStyle`
 
     @media screen and (max-width: 480px){
         html{
-            font-size: 10px;
+            /* font-size: 10px; */
         }
+
     }
 
     

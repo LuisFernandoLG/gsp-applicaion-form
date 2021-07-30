@@ -3,6 +3,7 @@ import {
   NavigationBarButton,
   SecondaryButton,
 } from "../styleComponents/ButtonsStyled";
+import { breakpointUp } from "../styleComponents/ResponsiveStyle";
 import { Wrapper } from "../Wrapper";
 
 const SectionSlider = ({
@@ -23,11 +24,14 @@ const SectionSlider = ({
     <>
       <NavigationCounter flex justifyContent="center">
         <Wrapper flex gap="0.5rem" wrap="true" alignContent="flex-start">
-          {Array.from(Array(totalSections + 1).keys()).map((num) =>
+          {Array.from(Array(totalSections + 1).keys()).map((num, index) =>
             num === numSectionForm ? (
-              <NavigationBarButton> {num + 1} </NavigationBarButton>
+              <NavigationBarButton key={index}> {num + 1} </NavigationBarButton>
             ) : (
-              <SecondaryButton onClick={() => goSpecificSectionForm(num)}>
+              <SecondaryButton
+                key={index}
+                onClick={() => goSpecificSectionForm(num)}
+              >
                 {num + 1}
               </SecondaryButton>
             )
@@ -67,5 +71,6 @@ const NavigatiBar = styled(Wrapper)`
 
 const NavigationCounter = styled(Wrapper)`
   font-weight: 600;
-  font-size: 2rem;
+
+  ${breakpointUp("small", `font-size: 10px;`)}
 `;

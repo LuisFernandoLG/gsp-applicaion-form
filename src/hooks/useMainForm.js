@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { generate } from "shortid";
 
 const initialForm = {
   personalInfoName: "",
@@ -49,6 +50,7 @@ const initialForm = {
     items: [],
 
     example: {
+      id: "",
       startDate: "",
       endDate: "",
       hours: "",
@@ -58,6 +60,7 @@ const initialForm = {
   extracurricularAcknowledgements: {
     items: [],
     example: {
+      id: "",
       title: "",
       institution: "",
       description: "",
@@ -94,11 +97,13 @@ export const useMainForm = () => {
   };
 
   const addNewListElements = (nameGroup) => {
+    const newItem = { ...form[nameGroup].example, id: generate() };
+
     setForm({
       ...form,
       [nameGroup]: {
         ...form[nameGroup],
-        items: [...form[nameGroup].items, form[nameGroup].example],
+        items: [...form[nameGroup].items, newItem],
       },
     });
   };

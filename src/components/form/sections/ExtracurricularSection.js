@@ -23,7 +23,7 @@ export const ExtracurricularSection = ({
         <div className="questions">
           {form.extracurricularActivities.items.map((item, index) => {
             return (
-              <CardItem key={index} flex directionColumn gap="1rem">
+              <CardItem key={item.id} flex directionColumn gap="1rem">
                 <DeleteButton
                   onClick={() =>
                     handleDeleteFromListElements(
