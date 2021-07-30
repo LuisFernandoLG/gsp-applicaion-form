@@ -42,7 +42,7 @@ export const RadioGroupForm = ({
 
 const RadioGroupFormStyled = styled(Wrapper)`
   box-shadow: 0 0.625rem 1.875rem -1.25rem gray;
-  padding: 2rem 0 1rem 1rem;
+  padding: 0.5rem 0 1rem 0.5rem;
   border-radius: 1rem;
 
   input {

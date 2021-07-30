@@ -31,6 +31,14 @@ export const AcademicBackgroundSection = ({
             handleBlur={handleBlur}
           />
           <InputForm
+            type="number"
+            placeHolder="años cursados"
+            name="academicBackgroundSecondarySchoolYears"
+            value={form.academicBackgroundSecondarySchoolYears}
+            handleChange={handleChange}
+            handleBlur={handleBlur}
+          />
+          <InputForm
             type="text"
             placeHolder="Dirección"
             name="academicBackgroundSecondarySchoolAddress"

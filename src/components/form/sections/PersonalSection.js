@@ -53,6 +53,15 @@ export const PersonalSection = ({ form, handleChange, handleBlur }) => {
             handleBlur={handleBlur}
           />
 
+          <RadioGroupForm
+            options={["sí", "no"]}
+            placeholder="¿Hablas inglés?"
+            value={form.personalInfoSpeakEnglish}
+            name="personalInfoSpeakEnglish"
+            handleChange={handleChange}
+            handleBlur={handleBlur}
+          />
+
           <ProfileImageInput
             name="personalInfoPhoto"
             value={form.personalInfoPhoto}
@@ -75,10 +84,18 @@ export const PersonalSection = ({ form, handleChange, handleBlur }) => {
             handleBlur={handleBlur}
           />
           <InputForm
-            type="number"
-            placeHolder="Teléfono"
+            type="tel"
+            placeHolder="Teléfono #1"
             name="personalInfoPhone"
             value={form.personalInfoPhone}
+            handleChange={handleChange}
+            handleBlur={handleBlur}
+          />
+          <InputForm
+            type="tel"
+            placeHolder="Teléfono #2"
+            name="personalInfoPhone2"
+            value={form.personalInfoPhone2}
             handleChange={handleChange}
             handleBlur={handleBlur}
           />
