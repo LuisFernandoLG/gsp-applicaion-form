@@ -18,7 +18,7 @@ export const AcademicBackgroundSection = ({
             type="text"
             placeHolder="nombre"
             name="academicBackgroundSecondarySchoolName"
-            value={form.academicBackgroundSecondarySchoolName.value}
+            value={form.academicBackgroundSecondarySchoolName}
             handleChange={handleChange}
             handleBlur={handleBlur}
           />
@@ -26,7 +26,7 @@ export const AcademicBackgroundSection = ({
             type="number"
             placeHolder="Promedio"
             name="academicBackgroundSecondarySchoolGrades"
-            value={form.academicBackgroundSecondarySchoolGrades.value}
+            value={form.academicBackgroundSecondarySchoolGrades}
             handleChange={handleChange}
             handleBlur={handleBlur}
           />
@@ -34,7 +34,7 @@ export const AcademicBackgroundSection = ({
             type="number"
             placeHolder="años cursados"
             name="academicBackgroundSecondarySchoolYears"
-            value={form.academicBackgroundSecondarySchoolYears.value}
+            value={form.academicBackgroundSecondarySchoolYears}
             handleChange={handleChange}
             handleBlur={handleBlur}
           />
@@ -42,7 +42,7 @@ export const AcademicBackgroundSection = ({
             type="text"
             placeHolder="Dirección"
             name="academicBackgroundSecondarySchoolAddress"
-            value={form.academicBackgroundSecondarySchoolAddress.value}
+            value={form.academicBackgroundSecondarySchoolAddress}
             handleChange={handleChange}
             handleBlur={handleBlur}
           />
@@ -56,7 +56,7 @@ export const AcademicBackgroundSection = ({
             type="text"
             placeHolder="nombre"
             name="academicBackgroundHighySchoolName"
-            value={form.academicBackgroundHighySchoolName.value}
+            value={form.academicBackgroundHighySchoolName}
             handleChange={handleChange}
             handleBlur={handleBlur}
           />
@@ -64,7 +64,7 @@ export const AcademicBackgroundSection = ({
             type="number"
             placeHolder="Promedio"
             name="academicBackgroundHighySchoolGrades"
-            value={form.academicBackgroundHighySchoolGrades.value}
+            value={form.academicBackgroundHighySchoolGrades}
             handleChange={handleChange}
             handleBlur={handleBlur}
           />
@@ -72,7 +72,7 @@ export const AcademicBackgroundSection = ({
             type="text"
             placeHolder="años cursados"
             name="academicBackgroundHighySchoolYears"
-            value={form.academicBackgroundHighySchoolYears.value}
+            value={form.academicBackgroundHighySchoolYears}
             handleChange={handleChange}
             handleBlur={handleBlur}
           />
@@ -81,7 +81,7 @@ export const AcademicBackgroundSection = ({
             type="text"
             placeHolder="Dirección"
             name="academicBackgroundHighySchoolAddress"
-            value={form.academicBackgroundHighySchoolAddress.value}
+            value={form.academicBackgroundHighySchoolAddress}
             handleChange={handleChange}
             handleBlur={handleBlur}
           />

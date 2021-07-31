@@ -38,7 +38,7 @@ export const ExtracurricularSection = ({
                   type="date"
                   placeHolder="Fecha inicio"
                   name="startDate"
-                  value={item.startDate.value}
+                  value={item.startDate}
                   handleChange={(e) =>
                     handleChangeListElements(
                       "extracurricularActivities",
@@ -53,7 +53,7 @@ export const ExtracurricularSection = ({
                   type="date"
                   placeHolder="Fecha fin"
                   name="endDate"
-                  value={item.endDate.value}
+                  value={item.endDate}
                   handleChange={(e) =>
                     handleChangeListElements(
                       "extracurricularActivities",
@@ -67,7 +67,7 @@ export const ExtracurricularSection = ({
                   type="number"
                   placeHolder="Total de horas"
                   name="hours"
-                  value={item.hours.value}
+                  value={item.hours}
                   handleChange={(e) =>
                     handleChangeListElements(
                       "extracurricularActivities",
@@ -80,7 +80,7 @@ export const ExtracurricularSection = ({
                 <InputForm
                   type="text"
                   placeHolder="descripción"
-                  value={item.description.value}
+                  value={item.description}
                   name="description"
                   handleChange={(e) =>
                     handleChangeListElements(
@@ -127,7 +127,7 @@ export const ExtracurricularSection = ({
                 <InputForm
                   type="text"
                   placeHolder="Reconocimiento"
-                  value={item.title.value}
+                  value={item.title}
                   name="title"
                   handleChange={(e) =>
                     handleChangeListElements(
@@ -141,7 +141,7 @@ export const ExtracurricularSection = ({
                 <InputForm
                   type="text"
                   placeHolder="Institución"
-                  value={item.institution.value}
+                  value={item.institution}
                   name="institution"
                   handleChange={(e) =>
                     handleChangeListElements(
@@ -154,7 +154,7 @@ export const ExtracurricularSection = ({
                 <InputForm
                   type="text"
                   placeHolder="Descripción"
-                  value={item.description.value}
+                  value={item.description}
                   name="description"
                   handleChange={(e) =>
                     handleChangeListElements(

@@ -24,7 +24,6 @@ export const RadioGroupForm = ({
             <Wrapper key={`${name}-${option}-id`} flex gap="0.5em">
               <label htmlFor={`${name}-${option}`}> {option}</label>
               <input
-                placeholder={placeholder}
                 type="radio"
                 name={name}
                 id={`${name}-${option}`}

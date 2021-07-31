@@ -15,7 +15,7 @@ export const PersonalSection = ({ form, handleChange, handleBlur }) => {
           <InputForm
             type="text"
             placeHolder="nombre"
-            value={form.personalInfoName.value}
+            value={form.personalInfoName}
             name="personalInfoName"
             handleChange={handleChange}
             handleBlur={handleBlur}
@@ -23,7 +23,7 @@ export const PersonalSection = ({ form, handleChange, handleBlur }) => {
           <InputForm
             type="text"
             placeHolder="Apellido paterno"
-            value={form.personalInfoLastName.value}
+            value={form.personalInfoLastName}
             name="personalInfoLastName"
             handleChange={handleChange}
             handleBlur={handleBlur}
@@ -31,14 +31,14 @@ export const PersonalSection = ({ form, handleChange, handleBlur }) => {
           <InputForm
             type="text"
             placeHolder="Apellido materno"
-            value={form.personalInfoSecondLastName.value}
+            value={form.personalInfoSecondLastName}
             name="personalInfoSecondLastName"
             handleChange={handleChange}
             handleBlur={handleBlur}
           />
           <RadioGroupForm
             options={["masculino", "femenino"]}
-            value={form.personalInfoGender.value}
+            value={form.personalInfoGender}
             placeholder="Sexo"
             name="personalInfoGender"
             handleChange={handleChange}
@@ -47,7 +47,7 @@ export const PersonalSection = ({ form, handleChange, handleBlur }) => {
           <InputForm
             type="date"
             placeHolder="Fecha de nacimiento"
-            value={form.personalInfoBday.value}
+            value={form.personalInfoBday}
             name="personalInfoBday"
             handleChange={handleChange}
             handleBlur={handleBlur}
@@ -56,7 +56,7 @@ export const PersonalSection = ({ form, handleChange, handleBlur }) => {
           <RadioGroupForm
             options={["sí", "no"]}
             placeholder="¿Hablas inglés?"
-            value={form.personalInfoSpeakEnglish.value}
+            value={form.personalInfoSpeakEnglish}
             name="personalInfoSpeakEnglish"
             handleChange={handleChange}
             handleBlur={handleBlur}
@@ -64,7 +64,7 @@ export const PersonalSection = ({ form, handleChange, handleBlur }) => {
 
           <ProfileImageInput
             name="personalInfoPhoto"
-            value={form.personalInfoPhoto.value}
+            value={form.personalInfoPhoto}
             placeHolder="Eligir fotografía"
             handleChange={handleChange}
             handleBlur={handleBlur}
@@ -78,7 +78,7 @@ export const PersonalSection = ({ form, handleChange, handleBlur }) => {
           <InputForm
             type="email"
             placeHolder="email"
-            value={form.personalInfoEmail.value}
+            value={form.personalInfoEmail}
             name="personalInfoEmail"
             handleChange={handleChange}
             handleBlur={handleBlur}
@@ -87,7 +87,7 @@ export const PersonalSection = ({ form, handleChange, handleBlur }) => {
             type="tel"
             placeHolder="Teléfono #1"
             name="personalInfoPhone"
-            value={form.personalInfoPhone.value}
+            value={form.personalInfoPhone}
             handleChange={handleChange}
             handleBlur={handleBlur}
           />
@@ -95,7 +95,7 @@ export const PersonalSection = ({ form, handleChange, handleBlur }) => {
             type="tel"
             placeHolder="Teléfono #2"
             name="personalInfoPhone2"
-            value={form.personalInfoPhone2.value}
+            value={form.personalInfoPhone2}
             handleChange={handleChange}
             handleBlur={handleBlur}
           />
@@ -109,7 +109,7 @@ export const PersonalSection = ({ form, handleChange, handleBlur }) => {
             type="text"
             placeHolder="Ciudad"
             name="personalInfoCity"
-            value={form.personalInfoCity.value}
+            value={form.personalInfoCity}
             handleChange={handleChange}
             handleBlur={handleBlur}
           />
@@ -118,7 +118,7 @@ export const PersonalSection = ({ form, handleChange, handleBlur }) => {
             type="text"
             placeHolder="colonia"
             name="personalInfoSuburban"
-            value={form.personalInfoSuburban.value}
+            value={form.personalInfoSuburban}
             handleChange={handleChange}
             handleBlur={handleBlur}
           />
@@ -127,7 +127,7 @@ export const PersonalSection = ({ form, handleChange, handleBlur }) => {
             type="text"
             placeHolder="Calle"
             name="personalInfoStreet"
-            value={form.personalInfoStreet.value}
+            value={form.personalInfoStreet}
             handleChange={handleChange}
             handleBlur={handleBlur}
           />
@@ -136,7 +136,7 @@ export const PersonalSection = ({ form, handleChange, handleBlur }) => {
             type="number"
             placeHolder="Código postal"
             name="personalInfoCP"
-            value={form.personalInfoCP.value}
+            value={form.personalInfoCP}
             handleChange={handleChange}
             handleBlur={handleBlur}
           />

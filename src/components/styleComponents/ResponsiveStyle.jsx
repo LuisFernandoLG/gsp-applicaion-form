@@ -14,6 +14,8 @@ export const breakpointUp = (size, content)=>css`
         ${content}
 
     }
+
+    ${console.log(breakpoints[(size)=>size])}
 `
 
 // Desktop

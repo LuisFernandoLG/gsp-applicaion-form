@@ -10,39 +10,32 @@ export const ProfileImageInput = ({
   placeHolder,
   handleBlur,
 }) => {
+  const [profileImage, setProfileImage] = useState(null);
   const [profileImageURL, setProfileImageURL] = useState(null || value);
 
   const handleFileSelected = (e) => {
-    const reader = new FileReader();
-    let img = e.target.files[0];
-
-    reader.readAsDataURL(img);
-
-    reader.addEventListener("load", () => {
-      setProfileImageURL(reader.result);
-      handleChange({ ...e, value: reader.result });
-    });
-    reader.removeEventListener("load", () => {});
+    setProfileImage(e.target.files[0]);
+    // }
   };
 
-  // useEffect(() => {
-  //   const reader = new FileReader();
-  //   reader.addEventListener("load", () => {
-  //     setProfileImageURL(reader.result);
-  //   });
+  useEffect(() => {
+    const reader = new FileReader();
+    reader.addEventListener("load", () => {
+      setProfileImageURL(reader.result);
+    });
 
-  //   if (profileImage) {
-  //     reader.readAsDataURL(profileImage);
-  //   }
+    if (profileImage) {
+      reader.readAsDataURL(profileImage);
+    }
 
-  //   return () => {
-  //     reader.removeEventListener("load", () => {});
-  //   };
-  // }, [profileImage]);
+    return () => {
+      reader.removeEventListener("load", () => {});
+    };
+  }, [profileImage]);
 
-  // useEffect(() => {
-  // handleChange({ target: { name, value: profileImageURL } });
-  // }, [profileImageURL]);
+  useEffect(() => {
+    handleChange({ target: { name, value: profileImageURL } });
+  }, [profileImageURL]);
 
   return (
     <ProfileImageInputStyled>
@@ -53,7 +46,6 @@ export const ProfileImageInput = ({
         <span>{placeHolder}</span>
       </label>
       <input
-        placeholder={placeHolder}
         type="file"
         accept="image/png, image/jpeg"
         name={name}
