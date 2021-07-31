@@ -4,7 +4,12 @@ import { SubSectionForm } from "../../styleComponents/SubSectionForm";
 import { InputForm } from "../InputForm";
 import { RadioGroupForm } from "../RadioGroupForm";
 
-export const EconomicStatusSection = ({ form, handleChange, handleBlur }) => {
+export const EconomicStatusSection = ({
+  form,
+  handleChange,
+  handleBlur,
+  errors,
+}) => {
   return (
     <SectionForm flex directionColumn>
       <h2>Estado económico</h2>
@@ -18,6 +23,7 @@ export const EconomicStatusSection = ({ form, handleChange, handleBlur }) => {
             value={form.economicStatusNumOfPeopleLivingAtHome}
             handleChange={handleChange}
             handleBlur={handleBlur}
+            errors={errors["economicStatusNumOfPeopleLivingAtHome"]}
           />
 
           <InputForm
@@ -27,6 +33,7 @@ export const EconomicStatusSection = ({ form, handleChange, handleBlur }) => {
             value={form.economicStatusNumOfMembersFamily}
             handleChange={handleChange}
             handleBlur={handleBlur}
+            errors={errors["economicStatusNumOfMembersFamily"]}
           />
 
           <RadioGroupForm
@@ -36,7 +43,7 @@ export const EconomicStatusSection = ({ form, handleChange, handleBlur }) => {
             name="economicStatusHasOwnHouse"
             handleChange={handleChange}
             handleBlur={handleBlur}
-            // value={"masculino"}
+            errors={errors["economicStatusHasOwnHouse"]}
           />
           <RadioGroupForm
             options={["sí", "no"]}
@@ -45,6 +52,7 @@ export const EconomicStatusSection = ({ form, handleChange, handleBlur }) => {
             name="economicStatusHasCar"
             handleChange={handleChange}
             handleBlur={handleBlur}
+            errors={errors["economicStatusHasCar"]}
             // value={"masculino"}
           />
 
@@ -55,6 +63,7 @@ export const EconomicStatusSection = ({ form, handleChange, handleBlur }) => {
             name="economicStatusHasBankAccount"
             handleChange={handleChange}
             handleBlur={handleBlur}
+            errors={errors["economicStatusHasBankAccount"]}
           />
 
           <RadioGroupForm
@@ -64,6 +73,7 @@ export const EconomicStatusSection = ({ form, handleChange, handleBlur }) => {
             name="economicStatusHasInternet"
             handleChange={handleChange}
             handleBlur={handleBlur}
+            errors={errors["economicStatusHasInternet"]}
           />
         </div>
       </SubSectionForm>
@@ -78,6 +88,7 @@ export const EconomicStatusSection = ({ form, handleChange, handleBlur }) => {
             name="economicStatusHasJob"
             handleChange={handleChange}
             handleBlur={handleBlur}
+            errors={errors["economicStatusHasJob"]}
           />
 
           <InputForm
@@ -87,6 +98,7 @@ export const EconomicStatusSection = ({ form, handleChange, handleBlur }) => {
             value={form.economicStatusTimeLivingCabo}
             handleChange={handleChange}
             handleBlur={handleBlur}
+            errors={errors["economicStatusTimeLivingCabo"]}
           />
         </div>
       </SubSectionForm>

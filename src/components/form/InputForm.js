@@ -8,6 +8,7 @@ export const InputForm = ({
   value,
   handleChange,
   handleBlur,
+  errors,
 }) => {
   const inputRef = useRef(null);
 
@@ -16,7 +17,7 @@ export const InputForm = ({
   };
 
   return (
-    <InputStyled onClick={handleFocus}>
+    <InputStyled onClick={handleFocus} errors={errors}>
       <input
         onChange={handleChange}
         type={type}
@@ -54,7 +55,6 @@ const InputStyled = styled.div`
     font-size: 1rem;
     color: ${({ theme: { colors } }) => colors.color2};
     font-weight: 400;
-    /* letter-spacing: 1px; */
     padding: 10px 0 0px 0;
   }
 
@@ -64,7 +64,10 @@ const InputStyled = styled.div`
     left: 1rem;
     top: 50%;
     font-size: 1rem;
-    color: ${({ theme: { colors } }) => colors.tertiaryColor};
+    color: ${({ theme: { colors }, errors }) =>
+      errors
+        ? (errors.error && colors.errorColor) || colors.tertiaryColor
+        : colors.tertiaryColor};
     transition: transform 0.3s ease;
   }
 

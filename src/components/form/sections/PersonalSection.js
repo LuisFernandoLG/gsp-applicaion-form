@@ -5,7 +5,7 @@ import { RadioGroupForm } from "../RadioGroupForm";
 import { ProfileImageInput } from "../ProfileImageInput";
 
 import { InputForm } from "../InputForm";
-export const PersonalSection = ({ form, handleChange, handleBlur }) => {
+export const PersonalSection = ({ form, handleChange, handleBlur, errors }) => {
   return (
     <SectionForm flex directionColumn>
       <h2>Información de perfil</h2>
@@ -19,6 +19,7 @@ export const PersonalSection = ({ form, handleChange, handleBlur }) => {
             name="personalInfoName"
             handleChange={handleChange}
             handleBlur={handleBlur}
+            errors={errors["personalInfoName"]}
           />
           <InputForm
             type="text"
@@ -27,6 +28,7 @@ export const PersonalSection = ({ form, handleChange, handleBlur }) => {
             name="personalInfoLastName"
             handleChange={handleChange}
             handleBlur={handleBlur}
+            errors={errors["personalInfoLastName"]}
           />
           <InputForm
             type="text"
@@ -35,6 +37,7 @@ export const PersonalSection = ({ form, handleChange, handleBlur }) => {
             name="personalInfoSecondLastName"
             handleChange={handleChange}
             handleBlur={handleBlur}
+            errors={errors["personalInfoSecondLastName"]}
           />
           <RadioGroupForm
             options={["masculino", "femenino"]}
@@ -43,6 +46,8 @@ export const PersonalSection = ({ form, handleChange, handleBlur }) => {
             name="personalInfoGender"
             handleChange={handleChange}
             handleBlur={handleBlur}
+            errors={errors["personalInfoGender"]}
+            // errors={errors["personalInfoGender"]}
           />
           <InputForm
             type="date"
@@ -51,6 +56,7 @@ export const PersonalSection = ({ form, handleChange, handleBlur }) => {
             name="personalInfoBday"
             handleChange={handleChange}
             handleBlur={handleBlur}
+            errors={errors["personalInfoBday"]}
           />
 
           <RadioGroupForm
@@ -60,6 +66,7 @@ export const PersonalSection = ({ form, handleChange, handleBlur }) => {
             name="personalInfoSpeakEnglish"
             handleChange={handleChange}
             handleBlur={handleBlur}
+            errors={errors["personalInfoSpeakEnglish"]}
           />
 
           <ProfileImageInput
@@ -68,6 +75,7 @@ export const PersonalSection = ({ form, handleChange, handleBlur }) => {
             placeHolder="Eligir fotografía"
             handleChange={handleChange}
             handleBlur={handleBlur}
+            errors={errors["personalInfoPhoto"]}
           />
         </div>
       </SubSectionForm>
@@ -82,6 +90,7 @@ export const PersonalSection = ({ form, handleChange, handleBlur }) => {
             name="personalInfoEmail"
             handleChange={handleChange}
             handleBlur={handleBlur}
+            errors={errors["personalInfoEmail"]}
           />
           <InputForm
             type="tel"
@@ -90,6 +99,7 @@ export const PersonalSection = ({ form, handleChange, handleBlur }) => {
             value={form.personalInfoPhone}
             handleChange={handleChange}
             handleBlur={handleBlur}
+            errors={errors["personalInfoPhone"]}
           />
           <InputForm
             type="tel"
@@ -98,6 +108,7 @@ export const PersonalSection = ({ form, handleChange, handleBlur }) => {
             value={form.personalInfoPhone2}
             handleChange={handleChange}
             handleBlur={handleBlur}
+            errors={errors["personalInfoPhone2"]}
           />
         </div>
       </SubSectionForm>
@@ -112,6 +123,7 @@ export const PersonalSection = ({ form, handleChange, handleBlur }) => {
             value={form.personalInfoCity}
             handleChange={handleChange}
             handleBlur={handleBlur}
+            errors={errors["personalInfoCity"]}
           />
 
           <InputForm
@@ -121,6 +133,7 @@ export const PersonalSection = ({ form, handleChange, handleBlur }) => {
             value={form.personalInfoSuburban}
             handleChange={handleChange}
             handleBlur={handleBlur}
+            errors={errors["personalInfoSuburban"]}
           />
 
           <InputForm
@@ -130,6 +143,7 @@ export const PersonalSection = ({ form, handleChange, handleBlur }) => {
             value={form.personalInfoStreet}
             handleChange={handleChange}
             handleBlur={handleBlur}
+            errors={errors["personalInfoStreet"]}
           />
 
           <InputForm
@@ -139,6 +153,7 @@ export const PersonalSection = ({ form, handleChange, handleBlur }) => {
             value={form.personalInfoCP}
             handleChange={handleChange}
             handleBlur={handleBlur}
+            errors={errors["personalInfoCP"]}
           />
         </div>
       </SubSectionForm>

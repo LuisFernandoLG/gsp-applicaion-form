@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import image from "../../img/cameraPhoto.svg";
 import styled from "styled-components";
 import { Wrapper } from "../Wrapper";
@@ -9,39 +9,30 @@ export const ProfileImageInput = ({
   handleChange,
   placeHolder,
   handleBlur,
+  errors,
 }) => {
-  const [profileImage, setProfileImage] = useState(null);
   const [profileImageURL, setProfileImageURL] = useState(null || value);
 
   const handleFileSelected = (e) => {
-    setProfileImage(e.target.files[0]);
-    // }
-  };
-
-  useEffect(() => {
     const reader = new FileReader();
-    reader.addEventListener("load", () => {
+    reader.addEventListener("load", (e) => {
+      handleChange({ target: { name: name, value: reader.result } });
       setProfileImageURL(reader.result);
     });
 
-    if (profileImage) {
-      reader.readAsDataURL(profileImage);
-    }
+    reader.readAsDataURL(e.target.files[0]);
+  };
 
-    return () => {
-      reader.removeEventListener("load", () => {});
-    };
-  }, [profileImage]);
-
+  // HACK!!!
   useEffect(() => {
-    handleChange({ target: { name, value: profileImageURL } });
+    handleBlur({ target: { name: name, value: profileImageURL } });
   }, [profileImageURL]);
 
   return (
-    <ProfileImageInputStyled>
+    <ProfileImageInputStyled errors={errors}>
       <label htmlFor="image-profile">
         <PhotoPreview>
-          <img src={profileImageURL ? profileImageURL : image} alt="" />
+          <img src={value ? value : image} alt="profile image" />
         </PhotoPreview>
         <span>{placeHolder}</span>
       </label>
@@ -51,7 +42,7 @@ export const ProfileImageInput = ({
         name={name}
         id="image-profile"
         onChange={handleFileSelected}
-        onBlur={handleBlur}
+        // ref={inputFileRef}
       />
     </ProfileImageInputStyled>
   );
@@ -91,6 +82,11 @@ const ProfileImageInputStyled = styled(Wrapper)`
       text-align: center;
       text-decoration: underline;
       font-weight: 600;
+
+      color: ${({ theme: { colors }, errors }) =>
+        errors
+          ? (errors.error && colors.errorColor) || colors.tertiaryColor
+          : colors.tertiaryColor};
     }
   }
 

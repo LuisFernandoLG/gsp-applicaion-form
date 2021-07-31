@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const buttonStyled = styled.button`
+const buttonStyled = styled.button.attrs({type:"button"})`
   border-radius: 1rem;
 `;
 
@@ -24,7 +24,7 @@ export const DeleteButton = styled(buttonStyled)`
   padding: 0.9375rem 1.5625rem;
 `;
 
-export const SubmitButton = styled(buttonStyled)`
+export const SubmitButton = styled(buttonStyled).attrs({type:"submit"})`
   padding: 1.5rem 2.5rem;
   font-size: 1rem;
   font-weight: 600;

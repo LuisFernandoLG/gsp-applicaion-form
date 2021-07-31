@@ -2,7 +2,7 @@ import { SectionForm } from "../../styleComponents/SectionForm";
 import { SubSectionForm } from "../../styleComponents/SubSectionForm";
 
 import { InputForm } from "../InputForm";
-export const MotherSection = ({ form, handleChange, handleBlur }) => {
+export const MotherSection = ({ form, handleChange, handleBlur, errors }) => {
   return (
     <SectionForm flex directionColumn>
       <h2>Información de la madre</h2>
@@ -16,6 +16,7 @@ export const MotherSection = ({ form, handleChange, handleBlur }) => {
             value={form.motherInfoName}
             handleChange={handleChange}
             handleBlur={handleBlur}
+            errors={errors["motherInfoName"]}
           />
 
           <InputForm
@@ -25,6 +26,7 @@ export const MotherSection = ({ form, handleChange, handleBlur }) => {
             value={form.motherInfoLastName}
             handleChange={handleChange}
             handleBlur={handleBlur}
+            errors={errors["motherInfoLastName"]}
           />
 
           <InputForm
@@ -34,6 +36,7 @@ export const MotherSection = ({ form, handleChange, handleBlur }) => {
             value={form.motherInfoSecondLastName}
             handleChange={handleChange}
             handleBlur={handleBlur}
+            errors={errors["motherInfoSecondLastName"]}
           />
         </div>
       </SubSectionForm>
@@ -48,6 +51,7 @@ export const MotherSection = ({ form, handleChange, handleBlur }) => {
             value={form.motherInfoSecondLastJob}
             handleChange={handleChange}
             handleBlur={handleBlur}
+            errors={errors["motherInfoSecondLastJob"]}
           />
 
           <InputForm
@@ -57,6 +61,7 @@ export const MotherSection = ({ form, handleChange, handleBlur }) => {
             value={form.motherInfoSecondFormalIncome}
             handleChange={handleChange}
             handleBlur={handleBlur}
+            errors={errors["motherInfoSecondFormalIncome"]}
           />
           <InputForm
             type="number"
@@ -65,6 +70,7 @@ export const MotherSection = ({ form, handleChange, handleBlur }) => {
             value={form.motherInfoSecondInformalIncome}
             handleChange={handleChange}
             handleBlur={handleBlur}
+            errors={errors["motherInfoSecondInformalIncome"]}
           />
         </div>
       </SubSectionForm>

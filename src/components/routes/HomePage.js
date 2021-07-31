@@ -24,7 +24,7 @@ const HomePage = () => {
         <img src={formImage} alt="form" />
       </div>
       <GoButton onClick={goToForm}>Ir a la aplicación</GoButton>
-      <BackHomeButton as="a" href="https://confident-wing-21f7a8.netlify.app">
+      <BackHomeButton as="a" href="https://gspcabo.netlify.app/">
         Volver a GSP
       </BackHomeButton>
     </WelcomeCard>

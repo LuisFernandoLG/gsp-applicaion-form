@@ -2,7 +2,7 @@ import { SectionForm } from "../../styleComponents/SectionForm";
 import { SubSectionForm } from "../../styleComponents/SubSectionForm";
 
 import { InputForm } from "../InputForm";
-export const FatherSection = ({ form, handleChange, handleBlur }) => {
+export const FatherSection = ({ form, handleChange, handleBlur, errors }) => {
   return (
     <SectionForm flex directionColumn>
       <h2>Información del padre</h2>
@@ -16,6 +16,7 @@ export const FatherSection = ({ form, handleChange, handleBlur }) => {
             value={form.fatherInfoName}
             handleChange={handleChange}
             handleBlur={handleBlur}
+            errors={errors["fatherInfoName"]}
           />
 
           <InputForm
@@ -25,6 +26,7 @@ export const FatherSection = ({ form, handleChange, handleBlur }) => {
             value={form.fatherInfoLastName}
             handleChange={handleChange}
             handleBlur={handleBlur}
+            errors={errors["fatherInfoLastName"]}
           />
 
           <InputForm
@@ -34,6 +36,7 @@ export const FatherSection = ({ form, handleChange, handleBlur }) => {
             value={form.fatherInfoSecondLastName}
             handleChange={handleChange}
             handleBlur={handleBlur}
+            errors={errors["fatherInfoSecondLastName"]}
           />
         </div>
       </SubSectionForm>
@@ -48,6 +51,7 @@ export const FatherSection = ({ form, handleChange, handleBlur }) => {
             value={form.fatherInfoSecondLastJob}
             handleChange={handleChange}
             handleBlur={handleBlur}
+            errors={errors["fatherInfoSecondLastJob"]}
           />
 
           <InputForm
@@ -57,6 +61,7 @@ export const FatherSection = ({ form, handleChange, handleBlur }) => {
             value={form.fatherInfoSecondFormalIncome}
             handleChange={handleChange}
             handleBlur={handleBlur}
+            errors={errors["fatherInfoSecondFormalIncome"]}
           />
           <InputForm
             type="number"
@@ -65,6 +70,7 @@ export const FatherSection = ({ form, handleChange, handleBlur }) => {
             value={form.fatherInfoSecondInformalIncome}
             handleChange={handleChange}
             handleBlur={handleBlur}
+            errors={errors["fatherInfoSecondInformalIncome"]}
           />
         </div>
       </SubSectionForm>

@@ -1,5 +1,7 @@
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { generate } from "shortid";
+import { routes } from "../helpers/routes";
 
 const initialForm = {
   personalInfoName: "",
@@ -79,10 +81,44 @@ const initialLocalStorageForm = localStorage.getItem("gspForm")
 
 export const useMainForm = () => {
   const [form, setForm] = useState(initialLocalStorageForm);
-  const [erros, setErrors] = useState({});
+  const [errors, setErrors] = useState({});
+  let history = useHistory();
+
+  const handleError = (e) => {
+    const { name, value } = e.target;
+    const isEmpty = value.trim() === "";
+    setErrors({
+      ...errors,
+      [name]: {
+        error: isEmpty,
+        textError: "El campo está vacío",
+      },
+    });
+  };
+
+  const checkAllAnswers = () => {
+    let newErrors = {};
+    let isCorrect = true;
+    Object.keys(initialForm).map((key) => {
+      if (form[key] === "") {
+        newErrors = {
+          ...newErrors,
+          [key]: {
+            error: true,
+            textError: "Campo necesario",
+          },
+        };
+
+        isCorrect = false;
+      }
+    });
+    setErrors(newErrors);
+
+    return isCorrect;
+  };
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    let { name, value } = e.target;
     setForm({ ...form, [name]: value });
   };
 
@@ -123,20 +159,26 @@ export const useMainForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (checkAllAnswers()) {
+      history.push(routes.SUCCESS_PAGE);
+    } else {
+      alert("Llena todos los campos por favor");
+    }
   };
 
-  const handleBlur = () => {
-    console.log("onBlur");
+  const handleBlur = (e) => {
+    handleError(e);
+    saveFormInLocalStorage();
+  };
+
+  const saveFormInLocalStorage = () => {
     localStorage.setItem("gspForm", JSON.stringify(form));
   };
-
-  // useEffect(() => {
-  // }, [form]);
 
   return {
     form,
     handleChange,
-    erros,
+    errors,
     handleSubmit,
     handleChangeListElements,
     addNewListElements,

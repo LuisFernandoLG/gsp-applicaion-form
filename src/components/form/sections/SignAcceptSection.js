@@ -7,7 +7,12 @@ import { SubmitButton } from "../../styleComponents/ButtonsStyled";
 import styled from "styled-components";
 import promisePerson from "../../../img/promise.svg";
 
-export const SignAcceptSection = ({ form, handleChange, handleBlur }) => {
+export const SignAcceptSection = ({
+  form,
+  handleChange,
+  handleBlur,
+  errors,
+}) => {
   return (
     <>
       <SectionForm flex directionColumn>
@@ -23,6 +28,7 @@ export const SignAcceptSection = ({ form, handleChange, handleBlur }) => {
               name="signAccept"
               handleChange={handleChange}
               handleBlur={handleBlur}
+              errors={errors["signAccept"]}
             />
           </div>
         </SubSectionForm>
@@ -31,7 +37,7 @@ export const SignAcceptSection = ({ form, handleChange, handleBlur }) => {
         </PromisePersonImage>
         <PrivacyPolicy />
         <Wrapper flex justifyContent="center" alignItems="center">
-          <SubmitButton type="submit">Envíar</SubmitButton>
+          <SubmitButton>Envíar</SubmitButton>
         </Wrapper>
       </SectionForm>
     </>

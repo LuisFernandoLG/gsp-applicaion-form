@@ -10,6 +10,7 @@ const SectionSlider = ({
   numSectionForm,
   SectionForm,
   form,
+  errors,
   handleChange,
   handleBlur,
   handleChangeListElements,
@@ -40,6 +41,7 @@ const SectionSlider = ({
       </NavigationCounter>
       <SectionForm
         form={form}
+        errors={errors}
         handleChange={handleChange}
         handleBlur={handleBlur}
         handleDeleteFromListElements={handleDeleteFromListElements}
@@ -48,13 +50,13 @@ const SectionSlider = ({
       ></SectionForm>
       <NavigatiBar flex justifyContent="space-evenly">
         {numSectionForm > 0 && (
-          <NavigationBarButton onClick={goPrevSectionForm}>
+          <NavigationBarButton type="button" onClick={goPrevSectionForm}>
             Regresar
           </NavigationBarButton>
         )}
 
         {numSectionForm < totalSections && (
-          <NavigationBarButton onClick={goNextSectionForm}>
+          <NavigationBarButton type="button" onClick={goNextSectionForm}>
             Siguiente
           </NavigationBarButton>
         )}

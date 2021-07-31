@@ -8,16 +8,6 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     
-    input, button{
-        border:none;
-        outline:none;
-        background: transparent;
-    }
-    
-    button{
-        cursor:pointer;
-    }
-    
     body{
         
         font-family: "Montserrat", sans-serif;
@@ -27,11 +17,31 @@ export const GlobalStyles = createGlobalStyle`
         margin-bottom: 5.125rem;
     }
     
+    
+    input{
+        border:none;
+        outline:none;
+        background: transparent;
+    }
+    
+    
+    button{
+        cursor:pointer;
+        border:none;
+    }
     input[type="date"]{
     }
 
     a{
         text-decoration: none;
+    }
+
+    button{    
+    &:focus{
+    outline : 3px solid ${({ theme: { colors } }) => colors.secondaryColor};
+
+        outline-offset: 5px;
+  }
     }
     
     
