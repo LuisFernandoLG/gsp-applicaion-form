@@ -19,7 +19,7 @@ export const SignAcceptSection = ({ form, handleChange, handleBlur }) => {
             <RadioGroupForm
               options={["sí", "no"]}
               placeholder="Acepto"
-              value={form.signAccept}
+              value={form.signAccept.value}
               name="signAccept"
               handleChange={handleChange}
               handleBlur={handleBlur}

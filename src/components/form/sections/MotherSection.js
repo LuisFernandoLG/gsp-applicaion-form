@@ -13,7 +13,7 @@ export const MotherSection = ({ form, handleChange, handleBlur }) => {
             type="text"
             placeHolder="nombre"
             name="motherInfoName"
-            value={form.motherInfoName}
+            value={form.motherInfoName.value}
             handleChange={handleChange}
             handleBlur={handleBlur}
           />
@@ -22,7 +22,7 @@ export const MotherSection = ({ form, handleChange, handleBlur }) => {
             type="text"
             placeHolder="Apellido paterno"
             name="motherInfoLastName"
-            value={form.motherInfoLastName}
+            value={form.motherInfoLastName.value}
             handleChange={handleChange}
             handleBlur={handleBlur}
           />
@@ -31,7 +31,7 @@ export const MotherSection = ({ form, handleChange, handleBlur }) => {
             type="text"
             placeHolder="Apellido materno"
             name="motherInfoSecondLastName"
-            value={form.motherInfoSecondLastName}
+            value={form.motherInfoSecondLastName.value}
             handleChange={handleChange}
             handleBlur={handleBlur}
           />
@@ -45,7 +45,7 @@ export const MotherSection = ({ form, handleChange, handleBlur }) => {
             type="text"
             placeHolder="Ocupación"
             name="motherInfoSecondLastJob"
-            value={form.motherInfoSecondLastJob}
+            value={form.motherInfoSecondLastJob.value}
             handleChange={handleChange}
             handleBlur={handleBlur}
           />
@@ -54,7 +54,7 @@ export const MotherSection = ({ form, handleChange, handleBlur }) => {
             type="number"
             placeHolder="$ Ingreso formal"
             name="motherInfoSecondFormalIncome"
-            value={form.motherInfoSecondFormalIncome}
+            value={form.motherInfoSecondFormalIncome.value}
             handleChange={handleChange}
             handleBlur={handleBlur}
           />
@@ -62,7 +62,7 @@ export const MotherSection = ({ form, handleChange, handleBlur }) => {
             type="number"
             placeHolder="$ Ingreso informal"
             name="motherInfoSecondInformalIncome"
-            value={form.motherInfoSecondInformalIncome}
+            value={form.motherInfoSecondInformalIncome.value}
             handleChange={handleChange}
             handleBlur={handleBlur}
           />

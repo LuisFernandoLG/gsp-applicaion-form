@@ -50,6 +50,7 @@ const initialForm = {
   academicBackgroundHighySchoolAddress: "",
 
   extracurricularActivities: {
+    title: "Actividades extracurriculares",
     items: [],
 
     example: {
@@ -61,6 +62,7 @@ const initialForm = {
     },
   },
   extracurricularAcknowledgements: {
+    title: "Reconocimientos",
     items: [],
     example: {
       id: "",
@@ -83,17 +85,24 @@ export const useMainForm = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setForm({ ...form, [name]: value });
+    const questionText = e.target.getAttribute("placeholder");
+    setForm({ ...form, [name]: { value: value, question: questionText } });
   };
 
   const handleChangeListElements = (nameGroup, id, e) => {
     const { name, value } = e.target;
+    const questionText = e.target.getAttribute("placeholder");
     setForm({
       ...form,
       [nameGroup]: {
         ...form[nameGroup],
         items: form[nameGroup].items.map((item, index) =>
-          index === id ? { ...item, [name]: value } : item
+          index === id
+            ? {
+                ...item,
+                [name]: { ...item[name], value, question: questionText },
+              }
+            : item
         ),
       },
     });
@@ -126,12 +135,8 @@ export const useMainForm = () => {
   };
 
   const handleBlur = () => {
-    console.log("onBlur");
     localStorage.setItem("gspForm", JSON.stringify(form));
   };
-
-  // useEffect(() => {
-  // }, [form]);
 
   return {
     form,

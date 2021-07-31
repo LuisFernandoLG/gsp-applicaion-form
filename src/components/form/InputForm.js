@@ -25,6 +25,7 @@ export const InputForm = ({
         id={name}
         ref={inputRef}
         onBlur={handleBlur}
+        placeholder={placeHolder}
       />
       <label htmlFor={name}>{placeHolder}</label>
       <div className="bar"></div>
@@ -66,15 +67,18 @@ const InputStyled = styled.div`
     font-size: 1rem;
     color: ${({ theme: { colors } }) => colors.tertiaryColor};
     transition: transform 0.3s ease;
+    transform: translateY(-120%);
   }
 
-  input:not(:placeholder-shown) + label {
+  /* input:not(:placeholder-shown) + label {
     transform: translateY(-120%);
+  } */
+
+  input:placeholder-shown::placeholder {
+    color: transparent;
   }
 
   input:focus + label {
-    transform: translateY(-120%);
-
     color: ${({ theme: { colors } }) => colors.secondaryColor};
   }
 
