@@ -6,6 +6,8 @@ import { Wrapper } from "../../Wrapper";
 import { SubmitButton } from "../../styleComponents/ButtonsStyled";
 import styled from "styled-components";
 import promisePerson from "../../../img/promise.svg";
+import { NavLink } from "react-router-dom";
+import { routes } from "../../../helpers/routes";
 
 export const SignAcceptSection = ({
   form,
@@ -32,6 +34,29 @@ export const SignAcceptSection = ({
             />
           </div>
         </SubSectionForm>
+
+        <SubSectionForm flex wrap="true">
+          <h3>Foto pública</h3>
+          <div className="questions">
+            <RadioGroupForm
+              options={["sí", "no"]}
+              placeholder="Foto pública"
+              value={form.signAcceptPublicImage}
+              name="signAcceptPublicImage"
+              handleChange={handleChange}
+              handleBlur={handleBlur}
+              errors={errors["signAcceptPublicImage"]}
+            />
+
+            <PublicImageText>
+              ¿Quiéres que tu foto sea <br /> pública en nuestra sección de{" "}
+              <span>
+                <NavLink to={routes.APPLICATIONS_PAGE}>Aspirantes</NavLink>{" "}
+              </span>
+            </PublicImageText>
+          </div>
+        </SubSectionForm>
+
         <PromisePersonImage>
           <img src={promisePerson} alt="promise accept" />
         </PromisePersonImage>
@@ -50,5 +75,16 @@ const PromisePersonImage = styled.div`
   img {
     width: 100%;
     height: 100%;
+  }
+`;
+
+const PublicImageText = styled.p`
+  display: block;
+  width: 100%;
+  text-align: center;
+
+  a {
+    font-weight: 800;
+    color: ${({ theme: { colors } }) => colors.secondaryColor};
   }
 `;

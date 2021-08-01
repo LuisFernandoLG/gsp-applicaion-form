@@ -1,43 +1,60 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
+import { useFetch } from "../../hooks/useFetch";
 import { ApplicantCard } from "../ApplicantCard";
+import { ApplicantCardShadow } from "../ApplicantCardShadow";
 
-const applicantsInitial = [
-  {
-    id: 1,
-    name: "Luis Fernando",
-    lastName: "López",
-    secondLastName: "Gutiérrez",
-  },
-  {
-    id: 2,
-    name: "Carlos",
-    lastName: "Fernandez",
-    secondLastName: "Salgado",
-  },
-  {
-    id: 3,
-    name: "Jesús",
-    lastName: "Torres",
-    secondLastName: "De la cruz",
-  },
-];
+const initialAppForms = [];
+const initialAppFormShadows = [1, 2, 3, 4, 5];
 
 const ApplicationsPage = () => {
-  const [applicants, setApplicants] = useState(applicantsInitial);
+  const [applicants, setApplicants] = useState(initialAppForms);
+  const { get, isLoading } = useFetch();
+
+  useEffect(() => {
+    const fetchAppForms = async () => {
+      const appForms = await get("http://localhost:8000/forms");
+      console.log(appForms);
+      setApplicants(appForms || []);
+    };
+
+    fetchAppForms();
+  }, []);
 
   return (
     <div>
       <Title>Postulantes</Title>
       <ApplicantWrapper>
-        {applicants.map(({ id, name, lastName, secondLastName }) => (
-          <ApplicantCard
-            key={id}
-            name={name}
-            secondLastName={secondLastName}
-            lastName={lastName}
-          />
-        ))}
+        {isLoading &&
+          initialAppFormShadows.map((_, id) => {
+            return <ApplicantCardShadow key={id} />;
+          })}
+
+        {/* {isLoading && "CARGANDOOOOOOOOO"} */}
+        {!isLoading &&
+          applicants.map(
+            ({
+              id,
+              personalInfoName,
+              personalInfoLastName,
+              personalInfoSecondLastName,
+              personalInfoPhoto,
+              signAcceptPublicImage,
+            }) => (
+              <ApplicantCard
+                key={id}
+                publicPhoto={signAcceptPublicImage}
+                img={personalInfoPhoto}
+                name={personalInfoName}
+                lastName={personalInfoLastName}
+                secondLastName={personalInfoSecondLastName}
+              />
+            )
+          )}
+
+        {!isLoading && applicants.length === 0 && (
+          <MainMessage>No hay ninguna solicitudes :(</MainMessage>
+        )}
       </ApplicantWrapper>
     </div>
   );
@@ -53,6 +70,12 @@ const ApplicantWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(12.5rem, 1fr));
   gap: 1.5625rem;
+`;
+
+const MainMessage = styled.p`
+  grid-column: 1 / -1;
+  text-align: center;
+  font-size: 1.25rem;
 `;
 
 export default ApplicationsPage;

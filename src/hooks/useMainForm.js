@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { generate } from "shortid";
 import { routes } from "../helpers/routes";
+import { useFetch } from "./useFetch";
 
 const initialForm = {
   personalInfoName: "",
@@ -73,6 +74,7 @@ const initialForm = {
   },
 
   signAccept: "",
+  signAcceptPublicImage: "false",
 };
 
 const initialLocalStorageForm = localStorage.getItem("gspForm")
@@ -83,6 +85,7 @@ export const useMainForm = () => {
   const [form, setForm] = useState(initialLocalStorageForm);
   const [errors, setErrors] = useState({});
   let history = useHistory();
+  const { post, isLoading } = useFetch();
 
   const handleError = (e) => {
     const { name, value } = e.target;
@@ -160,10 +163,27 @@ export const useMainForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (checkAllAnswers()) {
+      const options = {
+        body: form,
+      };
+
+      console.log(options);
+      post("http://localhost:8000/form", options).then((data) => {
+        // console.log(data);
+      });
       history.push(routes.SUCCESS_PAGE);
     } else {
-      alert("Llena todos los campos por favor");
+      alert("Llena todos los campos por favor.");
     }
+  };
+
+  const sendAppForm = async () => {
+    // const options = {
+    //   body: JSON.stringify(form),
+    // };
+    // const response = await post("http://localhost:8000/form", options);
+    // console.log(response);
+    // return response;
   };
 
   const handleBlur = (e) => {

@@ -2,11 +2,17 @@ import styled from "styled-components";
 import formImage from "../img/formImage.svg";
 import { Wrapper } from "./Wrapper";
 
-export const ApplicantCard = ({ img, name, lastName, secondLastName }) => {
+export const ApplicantCard = ({
+  img,
+  name,
+  lastName,
+  secondLastName,
+  publicPhoto,
+}) => {
   return (
     <ApplicantCardStyled as="figure" flex directionColumn gap="1rem">
       <div className="image-profile">
-        <img src={formImage} alt="applicant" />
+        <img src={publicPhoto === "sí" ? img : formImage} alt="applicant" />
       </div>
       <figcaption>{`${name} ${lastName} ${secondLastName}`}</figcaption>
     </ApplicantCardStyled>
@@ -20,7 +26,19 @@ const ApplicantCardStyled = styled(Wrapper)`
   padding: 1rem;
   border-radius: 1rem;
 
+  img,
+  figcaption {
+    pointer-events: none;
+    &::selection {
+      background: transparent;
+    }
+  }
+
   .image-profile {
+    border-radius: 1rem;
+    overflow: hidden;
+    flex-basis: 80%;
+
     img {
       width: 100%;
       height: 100%;
