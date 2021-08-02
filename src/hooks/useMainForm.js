@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { generate } from "shortid";
 import { routes } from "../helpers/routes";
@@ -77,15 +77,19 @@ const initialForm = {
   signAcceptPublicImage: "false",
 };
 
-const initialLocalStorageForm = localStorage.getItem("gspForm")
-  ? JSON.parse(localStorage.getItem("gspForm"))
-  : initialForm;
-
 export const useMainForm = () => {
-  const [form, setForm] = useState(initialLocalStorageForm);
+  const [form, setForm] = useState(initialForm);
   const [errors, setErrors] = useState({});
   let history = useHistory();
   const { post, isLoading } = useFetch();
+
+  useEffect(() => {
+    const initialLocalStorageForm = localStorage.getItem("gspForm")
+      ? JSON.parse(localStorage.getItem("gspForm"))
+      : initialForm;
+
+    setForm(initialLocalStorageForm);
+  }, []);
 
   const handleError = (e) => {
     const { name, value } = e.target;
@@ -167,7 +171,6 @@ export const useMainForm = () => {
         body: form,
       };
 
-      console.log(options);
       post("http://localhost:8000/form", options).then((data) => {
         // console.log(data);
       });
@@ -177,19 +180,14 @@ export const useMainForm = () => {
     }
   };
 
-  const sendAppForm = async () => {
-    // const options = {
-    //   body: JSON.stringify(form),
-    // };
-    // const response = await post("http://localhost:8000/form", options);
-    // console.log(response);
-    // return response;
-  };
-
   const handleBlur = (e) => {
     handleError(e);
-    saveFormInLocalStorage();
+    console.log(e);
   };
+
+  useEffect(() => {
+    saveFormInLocalStorage();
+  }, [form]);
 
   const saveFormInLocalStorage = () => {
     localStorage.setItem("gspForm", JSON.stringify(form));

@@ -9,7 +9,7 @@ const initialAppFormShadows = [1, 2, 3, 4, 5];
 
 const ApplicationsPage = () => {
   const [applicants, setApplicants] = useState(initialAppForms);
-  const { get, isLoading } = useFetch();
+  const { get, isLoading, errors } = useFetch();
 
   useEffect(() => {
     const fetchAppForms = async () => {
@@ -20,6 +20,8 @@ const ApplicationsPage = () => {
 
     fetchAppForms();
   }, []);
+
+  console.log(errors);
 
   return (
     <div>
@@ -52,8 +54,10 @@ const ApplicationsPage = () => {
             )
           )}
 
-        {!isLoading && applicants.length === 0 && (
+        {!isLoading && !errors && applicants.length === 0 ? (
           <MainMessage>No hay ninguna solicitudes :(</MainMessage>
+        ) : (
+          errors && <MainMessage>{errors.statusText}</MainMessage>
         )}
       </ApplicantWrapper>
     </div>

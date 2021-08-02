@@ -25,7 +25,9 @@ export const ProfileImageInput = ({
 
   // HACK!!!
   useEffect(() => {
-    handleBlur({ target: { name: name, value: profileImageURL } });
+    return () => {
+      handleBlur({ target: { name: name, value: profileImageURL } });
+    };
   }, [profileImageURL]);
 
   return (
