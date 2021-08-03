@@ -75,7 +75,6 @@ export const PersonalSection = ({
             handleBlur={handleBlur}
             errors={errors["personalInfoSpeakEnglish"]}
           />
-
           <ProfileImageInput
             name="personalInfoPhoto"
             value={files.personalInfoPhoto}

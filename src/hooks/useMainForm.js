@@ -83,10 +83,12 @@ const initialFileInputs = {
 const initialLocalStorageForm = localStorage.getItem("gspForm")
   ? JSON.parse(localStorage.getItem("gspForm"))
   : initialForm;
+// setForm(initialLocalStorageForm);
 
 const initialLocalStorageFiles = localStorage.getItem("gspFiles")
   ? JSON.parse(localStorage.getItem("gspFiles"))
   : initialFileInputs;
+// setFiles(initialLocalStorageFiles);
 
 export const useMainForm = () => {
   const [form, setForm] = useState(initialLocalStorageForm);
@@ -137,13 +139,34 @@ export const useMainForm = () => {
     });
   };
 
+  const saveFilesLocalStorage = () => {
+    const filesData = JSON.stringify(files);
+    localStorage.setItem("gspFiles", filesData);
+  };
+
   useEffect(() => {
-    const saveFilesLocalStorage = () => {
-      const filesData = JSON.stringify(files);
-      localStorage.setItem("gspFiles", filesData);
-    };
+    console.log("files has changed");
     saveFilesLocalStorage();
   }, [files]);
+
+  useEffect(() => {
+    console.log("YA MONTADO");
+
+    const initialLocalStorageForm = localStorage.getItem("gspForm")
+      ? JSON.parse(localStorage.getItem("gspForm"))
+      : initialForm;
+    setForm(initialLocalStorageForm);
+
+    const initialLocalStorageFiles = localStorage.getItem("gspFiles")
+      ? JSON.parse(localStorage.getItem("gspFiles"))
+      : initialFileInputs;
+    setFiles(initialLocalStorageFiles);
+
+    return () => {
+      // saveFormLocalStorage();
+      // saveFilesLocalStorage();
+    };
+  }, []);
 
   const saveFormLocalStorage = () => {
     const formData = JSON.stringify(form);
@@ -234,6 +257,7 @@ export const useMainForm = () => {
   const handleBlur = (e) => {
     handleError(e);
     saveFormLocalStorage();
+    console.log("OnBlur");
   };
 
   return {
