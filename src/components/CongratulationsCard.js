@@ -19,13 +19,20 @@ const CongratulationsCard = ({ name }) => {
       <ThankfullText>
         <span>¡ Felicidades {name || ""}!</span> Tu solicitud ha sido recibida,
         ahora solo queda esperar los resultados que se publicarán en nuestra{" "}
-        <a href="https://www.facebook.com/greenscholarshipprogram">
+        <a
+          target="_blank"
+          href="https://www.facebook.com/greenscholarshipprogram"
+        >
           página de facebook
         </a>
         .
       </ThankfullText>
 
-      <SecondaryButton as="a" href="https://gspcabo.netlify.app/">
+      <SecondaryButton
+        as="a"
+        target="_blank"
+        href="https://gspcabo.netlify.app/"
+      >
         Volver a GSP
       </SecondaryButton>
     </Wrapper>

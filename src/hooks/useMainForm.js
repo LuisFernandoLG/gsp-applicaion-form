@@ -10,7 +10,6 @@ const initialForm = {
   personalInfoSecondLastName: "",
   personalInfoGender: "",
   personalInfoSpeakEnglish: "",
-  personalInfoPhoto: "",
   personalInfoBday: "",
   personalInfoEmail: "",
   personalInfoPhone: "",
@@ -74,22 +73,27 @@ const initialForm = {
   },
 
   signAccept: "",
-  signAcceptPublicImage: "false",
+  signAcceptPublicImage: "no",
 };
 
+const initialFileInputs = {
+  personalInfoPhoto: "",
+};
+
+const initialLocalStorageForm = localStorage.getItem("gspForm")
+  ? JSON.parse(localStorage.getItem("gspForm"))
+  : initialForm;
+
+const initialLocalStorageFiles = localStorage.getItem("gspFiles")
+  ? JSON.parse(localStorage.getItem("gspFiles"))
+  : initialFileInputs;
+
 export const useMainForm = () => {
-  const [form, setForm] = useState(initialForm);
+  const [form, setForm] = useState(initialLocalStorageForm);
+  const [files, setFiles] = useState(initialLocalStorageFiles);
   const [errors, setErrors] = useState({});
   let history = useHistory();
   const { post, isLoading } = useFetch();
-
-  useEffect(() => {
-    const initialLocalStorageForm = localStorage.getItem("gspForm")
-      ? JSON.parse(localStorage.getItem("gspForm"))
-      : initialForm;
-
-    setForm(initialLocalStorageForm);
-  }, []);
 
   const handleError = (e) => {
     const { name, value } = e.target;
@@ -106,8 +110,10 @@ export const useMainForm = () => {
   const checkAllAnswers = () => {
     let newErrors = {};
     let isCorrect = true;
-    Object.keys(initialForm).map((key) => {
-      if (form[key] === "") {
+    const initialCombinedForms = { ...initialForm, ...initialFileInputs };
+    const combinedCurrentForms = { ...form, ...files };
+    Object.keys(initialCombinedForms).forEach((key) => {
+      if (combinedCurrentForms[key] === "") {
         newErrors = {
           ...newErrors,
           [key]: {
@@ -122,6 +128,26 @@ export const useMainForm = () => {
     setErrors(newErrors);
 
     return isCorrect;
+  };
+
+  const handleChangeFiles = ({ name, value }) => {
+    setFiles({
+      ...files,
+      [name]: value,
+    });
+  };
+
+  useEffect(() => {
+    const saveFilesLocalStorage = () => {
+      const filesData = JSON.stringify(files);
+      localStorage.setItem("gspFiles", filesData);
+    };
+    saveFilesLocalStorage();
+  }, [files]);
+
+  const saveFormLocalStorage = () => {
+    const formData = JSON.stringify(form);
+    localStorage.setItem("gspForm", formData);
   };
 
   const handleChange = (e) => {
@@ -164,33 +190,50 @@ export const useMainForm = () => {
     });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (checkAllAnswers()) {
-      const options = {
-        body: form,
-      };
+  const cleanForm = () => {
+    console.error("LIMPIANDO");
+    // Como no puedo actulizar el estado después de redirigir a otra pagina, actualizaré el localStorage
+    localStorage.setItem("gspForm", JSON.stringify(initialForm));
+    localStorage.setItem("gspFiles", JSON.stringify(initialFileInputs));
+    // localStorage.removeItem("gspFiles");
+  };
 
-      post("http://localhost:8000/form", options).then((data) => {
-        // console.log(data);
+  const sendForm = () => {
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ ...form, ...files }),
+    };
+    fetch("http://localhost:8000/form", options)
+      .then((response) =>
+        !response.ok ? new Promise.reject("Algo salió mal") : response.json()
+      )
+      .then((json) => {
+        console.log(json);
+        if (json.status === "202") {
+          cleanForm();
+          history.push(routes.SUCCESS_PAGE);
+        } else {
+          alert("Algo no salió bien");
+        }
+      })
+      .catch((error) => {
+        // console.log(a);
+        alert("Algo no salió bien ERRORES");
       });
-      history.push(routes.SUCCESS_PAGE);
-    } else {
-      alert("Llena todos los campos por favor.");
-    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!checkAllAnswers()) alert("Llena todos los campos por favor.");
+    else sendForm();
   };
 
   const handleBlur = (e) => {
     handleError(e);
-    console.log(e);
-  };
-
-  useEffect(() => {
-    saveFormInLocalStorage();
-  }, [form]);
-
-  const saveFormInLocalStorage = () => {
-    localStorage.setItem("gspForm", JSON.stringify(form));
+    saveFormLocalStorage();
   };
 
   return {
@@ -202,5 +245,7 @@ export const useMainForm = () => {
     addNewListElements,
     handleDeleteFromListElements,
     handleBlur,
+    handleChangeFiles,
+    files,
   };
 };

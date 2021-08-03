@@ -7,6 +7,7 @@ import { useSliderSection } from "../../hooks/useSliderSection";
 export const MainForm = () => {
   const {
     form,
+    files,
     handleChange,
     handleSubmit,
     handleChangeListElements,
@@ -14,6 +15,7 @@ export const MainForm = () => {
     handleDeleteFromListElements,
     handleBlur,
     errors,
+    handleChangeFiles,
   } = useMainForm();
 
   const {
@@ -29,6 +31,7 @@ export const MainForm = () => {
     <FormStyled onSubmit={handleSubmit}>
       <Sections>
         <SectionSlider
+          handleChangeFiles={handleChangeFiles}
           goSpecificSectionForm={goSpecificSectionForm}
           totalSections={totalSections}
           goNextSectionForm={goNextSectionForm}
@@ -36,6 +39,7 @@ export const MainForm = () => {
           SectionForm={initialSections[numSectionForm]}
           numSectionForm={numSectionForm}
           form={form}
+          files={files}
           errors={errors}
           handleChange={handleChange}
           handleBlur={handleBlur}

@@ -1,4 +1,3 @@
-import { useEffect, useRef, useState } from "react";
 import image from "../../img/cameraPhoto.svg";
 import styled from "styled-components";
 import { Wrapper } from "../Wrapper";
@@ -6,35 +5,24 @@ import { Wrapper } from "../Wrapper";
 export const ProfileImageInput = ({
   name,
   value,
-  handleChange,
+  handleChangeFiles,
   placeHolder,
-  handleBlur,
   errors,
 }) => {
-  const [profileImageURL, setProfileImageURL] = useState(null || value);
-
   const handleFileSelected = (e) => {
     const reader = new FileReader();
     reader.addEventListener("load", (e) => {
-      handleChange({ target: { name: name, value: reader.result } });
-      setProfileImageURL(reader.result);
+      handleChangeFiles({ name, value: reader.result });
     });
 
     reader.readAsDataURL(e.target.files[0]);
   };
 
-  // HACK!!!
-  useEffect(() => {
-    return () => {
-      handleBlur({ target: { name: name, value: profileImageURL } });
-    };
-  }, [profileImageURL]);
-
   return (
     <ProfileImageInputStyled errors={errors}>
       <label htmlFor="image-profile">
         <PhotoPreview>
-          <img src={value ? value : image} alt="profile image" />
+          <img src={value ? value : image} alt="user" />
         </PhotoPreview>
         <span>{placeHolder}</span>
       </label>
@@ -44,7 +32,6 @@ export const ProfileImageInput = ({
         name={name}
         id="image-profile"
         onChange={handleFileSelected}
-        // ref={inputFileRef}
       />
     </ProfileImageInputStyled>
   );

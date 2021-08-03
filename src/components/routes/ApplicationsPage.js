@@ -14,14 +14,10 @@ const ApplicationsPage = () => {
   useEffect(() => {
     const fetchAppForms = async () => {
       const appForms = await get("http://localhost:8000/forms");
-      console.log(appForms);
       setApplicants(appForms || []);
     };
-
     fetchAppForms();
   }, []);
-
-  console.log(errors);
 
   return (
     <div>
@@ -32,7 +28,6 @@ const ApplicationsPage = () => {
             return <ApplicantCardShadow key={id} />;
           })}
 
-        {/* {isLoading && "CARGANDOOOOOOOOO"} */}
         {!isLoading &&
           applicants.map(
             ({
@@ -53,6 +48,21 @@ const ApplicationsPage = () => {
               />
             )
           )}
+
+        {/* {applicants
+          ? applicants.map((item) => {
+              return (
+                <Code>
+                  {" "}
+                  {JSON.stringify(
+                    { ...item, personalInfoPhoto: "" },
+                    undefined,
+                    4
+                  )}{" "}
+                </Code>
+              );
+            })
+          : null} */}
 
         {!isLoading && !errors && applicants.length === 0 ? (
           <MainMessage>No hay ninguna solicitudes :(</MainMessage>
@@ -83,3 +93,8 @@ const MainMessage = styled.p`
 `;
 
 export default ApplicationsPage;
+
+const Code = styled.p`
+  grid-column: 1 / -1;
+  width: 60%;
+`;

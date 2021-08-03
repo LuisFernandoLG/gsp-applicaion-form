@@ -10,9 +10,11 @@ const SectionSlider = ({
   numSectionForm,
   SectionForm,
   form,
+  files,
   errors,
   handleChange,
   handleBlur,
+  handleChangeFiles,
   handleChangeListElements,
   addNewListElements,
   handleDeleteFromListElements,
@@ -41,6 +43,8 @@ const SectionSlider = ({
       </NavigationCounter>
       <SectionForm
         form={form}
+        files={files}
+        handleChangeFiles={handleChangeFiles}
         errors={errors}
         handleChange={handleChange}
         handleBlur={handleBlur}

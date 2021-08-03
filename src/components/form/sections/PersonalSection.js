@@ -5,7 +5,14 @@ import { RadioGroupForm } from "../RadioGroupForm";
 import { ProfileImageInput } from "../ProfileImageInput";
 
 import { InputForm } from "../InputForm";
-export const PersonalSection = ({ form, handleChange, handleBlur, errors }) => {
+export const PersonalSection = ({
+  form,
+  files,
+  handleChange,
+  handleBlur,
+  errors,
+  handleChangeFiles,
+}) => {
   return (
     <SectionForm flex directionColumn>
       <h2>Información de perfil</h2>
@@ -45,7 +52,7 @@ export const PersonalSection = ({ form, handleChange, handleBlur, errors }) => {
             placeholder="Sexo"
             name="personalInfoGender"
             handleChange={handleChange}
-            handleBlur={handleBlur}
+            // handleBlur={handleBlur}
             errors={errors["personalInfoGender"]}
             // errors={errors["personalInfoGender"]}
           />
@@ -71,10 +78,9 @@ export const PersonalSection = ({ form, handleChange, handleBlur, errors }) => {
 
           <ProfileImageInput
             name="personalInfoPhoto"
-            value={form.personalInfoPhoto}
-            placeHolder="Eligir fotografía"
-            handleChange={handleChange}
-            handleBlur={handleBlur}
+            value={files.personalInfoPhoto}
+            handleChangeFiles={handleChangeFiles}
+            placeHolder={"Elegír una foto"}
             errors={errors["personalInfoPhoto"]}
           />
         </div>
