@@ -7,7 +7,7 @@ export const theme = {
     color1: "#4f98ca",
     color2: "#272727",
 
-    boxShadowLight: "0 0.3125rem 2rem -1rem #707070",
+    boxShadowLight: "0 0.625rem 1.8rem -0.8rem #707070",
 
     errorColor: "#F05454",
   },

@@ -31,7 +31,7 @@ const NavStyled = styled(Wrapper)`
   position: sticky;
   top: 0;
   background: ${({ theme: { colors } }) => colors.primaryColor};
-  box-shadow: ${({ theme: { colors } }) => colors.boxShadowLight};
+  box-shadow: 0 2px 15px -5px ${({ theme: { colors } }) => colors.tertiaryColor};
   padding: 1rem;
   z-index: 100;
 

@@ -25,7 +25,7 @@ const SectionSlider = ({
 }) => {
   return (
     <>
-      <NavigationCounter flex justifyContent="center">
+      <NavigationSectionBar flex justifyContent="center">
         <Wrapper flex gap="0.5rem" wrap="true" alignContent="flex-start">
           {Array.from(Array(totalSections + 1).keys()).map((num, index) =>
             num === numSectionForm ? (
@@ -40,7 +40,7 @@ const SectionSlider = ({
             )
           )}
         </Wrapper>
-      </NavigationCounter>
+      </NavigationSectionBar>
       <SectionForm
         form={form}
         files={files}
@@ -72,11 +72,12 @@ const SectionSlider = ({
 export default SectionSlider;
 
 const NavigatiBar = styled(Wrapper)`
-  margin-top: 1.125rem;
+  /* margin-top: 0.5px; */
+  /* background: red; */
 `;
 
-const NavigationCounter = styled(Wrapper)`
+const NavigationSectionBar = styled(Wrapper)`
   font-weight: 600;
-
+  /* background: red; */
   ${breakpointUp("small", `font-size: 10px;`)}
 `;

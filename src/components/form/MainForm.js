@@ -53,7 +53,7 @@ export const MainForm = () => {
 };
 
 const FormStyled = styled.form`
-  margin-top: 3.125rem;
+  /* margin-top: 3.125rem; */
 `;
 
 const Sections = styled(Wrapper)`

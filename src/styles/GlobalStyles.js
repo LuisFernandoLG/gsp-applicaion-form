@@ -11,9 +11,9 @@ export const GlobalStyles = createGlobalStyle`
     body{
         
         font-family: "Montserrat", sans-serif;
-        width: 90%;
+        width: 95%;
         max-width: 1400px;
-        margin: 1.25rem auto;
+        margin: 0 auto;
         margin-bottom: 5.125rem;
     }
     
