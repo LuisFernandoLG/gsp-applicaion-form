@@ -37,9 +37,10 @@ const ApplicantCardStyled = styled(Wrapper)`
   .image-profile {
     border-radius: 1rem;
     overflow: hidden;
-    flex-basis: 80%;
+    flex-basis: 14rem;
 
     img {
+      object-fit: cover;
       width: 100%;
       height: 100%;
     }
