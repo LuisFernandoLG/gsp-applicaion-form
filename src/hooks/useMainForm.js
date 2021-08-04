@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { generate } from "shortid";
 import { routes } from "../helpers/routes";
-import { useFetch } from "./useFetch";
 
 const initialForm = {
   personalInfoName: "",
@@ -76,26 +75,19 @@ const initialForm = {
   signAcceptPublicImage: "no",
 };
 
-const initialFileInputs = {
+const initialFiles = {
   personalInfoPhoto: "",
 };
 
-const initialLocalStorageForm = localStorage.getItem("gspForm")
-  ? JSON.parse(localStorage.getItem("gspForm"))
-  : initialForm;
-// setForm(initialLocalStorageForm);
-
 const initialLocalStorageFiles = localStorage.getItem("gspFiles")
   ? JSON.parse(localStorage.getItem("gspFiles"))
-  : initialFileInputs;
-// setFiles(initialLocalStorageFiles);
+  : initialFiles;
 
 export const useMainForm = () => {
-  const [form, setForm] = useState(initialLocalStorageForm);
+  const [form, setForm] = useState(initialForm);
   const [files, setFiles] = useState(initialLocalStorageFiles);
   const [errors, setErrors] = useState({});
   let history = useHistory();
-  const { post, isLoading } = useFetch();
 
   const handleError = (e) => {
     const { name, value } = e.target;
@@ -112,7 +104,7 @@ export const useMainForm = () => {
   const checkAllAnswers = () => {
     let newErrors = {};
     let isCorrect = true;
-    const initialCombinedForms = { ...initialForm, ...initialFileInputs };
+    const initialCombinedForms = { ...initialForm, ...initialFiles };
     const combinedCurrentForms = { ...form, ...files };
     Object.keys(initialCombinedForms).forEach((key) => {
       if (combinedCurrentForms[key] === "") {
@@ -139,34 +131,33 @@ export const useMainForm = () => {
     });
   };
 
+  const loadFilesFromStorage = () => {
+    const localFiles = localStorage.getItem("gspFiles")
+      ? JSON.parse(localStorage.getItem("gspFiles"))
+      : initialFiles;
+    setFiles(localFiles);
+  };
+
+  useEffect(() => {
+    loadFilesFromStorage();
+    loadFormFromStorage();
+  }, []);
+
   const saveFilesLocalStorage = () => {
     const filesData = JSON.stringify(files);
     localStorage.setItem("gspFiles", filesData);
   };
 
   useEffect(() => {
-    console.log("files has changed");
     saveFilesLocalStorage();
   }, [files]);
 
-  useEffect(() => {
-    console.log("YA MONTADO");
-
-    const initialLocalStorageForm = localStorage.getItem("gspForm")
+  const loadFormFromStorage = () => {
+    const localForm = localStorage.getItem("gspForm")
       ? JSON.parse(localStorage.getItem("gspForm"))
       : initialForm;
-    setForm(initialLocalStorageForm);
-
-    const initialLocalStorageFiles = localStorage.getItem("gspFiles")
-      ? JSON.parse(localStorage.getItem("gspFiles"))
-      : initialFileInputs;
-    setFiles(initialLocalStorageFiles);
-
-    return () => {
-      // saveFormLocalStorage();
-      // saveFilesLocalStorage();
-    };
-  }, []);
+    setForm(localForm);
+  };
 
   const saveFormLocalStorage = () => {
     const formData = JSON.stringify(form);
@@ -214,11 +205,8 @@ export const useMainForm = () => {
   };
 
   const cleanForm = () => {
-    console.error("LIMPIANDO");
-    // Como no puedo actulizar el estado después de redirigir a otra pagina, actualizaré el localStorage
     localStorage.setItem("gspForm", JSON.stringify(initialForm));
-    localStorage.setItem("gspFiles", JSON.stringify(initialFileInputs));
-    // localStorage.removeItem("gspFiles");
+    localStorage.setItem("gspFiles", JSON.stringify(initialFiles));
   };
 
   const sendForm = () => {
@@ -243,7 +231,6 @@ export const useMainForm = () => {
         }
       })
       .catch((error) => {
-        // console.log(a);
         alert("Algo no salió bien ERRORES");
       });
   };
@@ -257,7 +244,6 @@ export const useMainForm = () => {
   const handleBlur = (e) => {
     handleError(e);
     saveFormLocalStorage();
-    console.log("OnBlur");
   };
 
   return {

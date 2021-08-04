@@ -46,16 +46,6 @@ export const PersonalSection = ({
             handleBlur={handleBlur}
             errors={errors["personalInfoSecondLastName"]}
           />
-          <RadioGroupForm
-            options={["masculino", "femenino"]}
-            value={form.personalInfoGender}
-            placeholder="Sexo"
-            name="personalInfoGender"
-            handleChange={handleChange}
-            // handleBlur={handleBlur}
-            errors={errors["personalInfoGender"]}
-            // errors={errors["personalInfoGender"]}
-          />
           <InputForm
             type="date"
             placeHolder="Fecha de nacimiento"
@@ -64,6 +54,15 @@ export const PersonalSection = ({
             handleChange={handleChange}
             handleBlur={handleBlur}
             errors={errors["personalInfoBday"]}
+          />
+          <RadioGroupForm
+            options={["masculino", "femenino"]}
+            value={form.personalInfoGender}
+            placeholder="Sexo"
+            name="personalInfoGender"
+            handleChange={handleChange}
+            handleBlur={handleBlur}
+            errors={errors["personalInfoGender"]}
           />
 
           <RadioGroupForm

@@ -26,10 +26,9 @@ export const RadioGroupForm = ({
               <input
                 type="radio"
                 name={name}
-                id={`${name}-${option}`}
                 onChange={handleChange}
                 value={option}
-                defaultChecked={option === value}
+                checked={option === value}
                 onBlur={handleBlur}
               />
               <label htmlFor={`${name}-${option}`}> {option}</label>

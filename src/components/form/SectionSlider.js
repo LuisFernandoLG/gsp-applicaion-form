@@ -14,7 +14,6 @@ const SectionSlider = ({
   errors,
   handleChange,
   handleBlur,
-  handleChangeFiles,
   handleChangeListElements,
   addNewListElements,
   handleDeleteFromListElements,
@@ -22,6 +21,8 @@ const SectionSlider = ({
   goPrevSectionForm,
   totalSections,
   goSpecificSectionForm,
+  saveFilesLocalStorage,
+  handleChangeFiles,
 }) => {
   return (
     <>
@@ -45,6 +46,7 @@ const SectionSlider = ({
         form={form}
         files={files}
         handleChangeFiles={handleChangeFiles}
+        saveFilesLocalStorage={saveFilesLocalStorage}
         errors={errors}
         handleChange={handleChange}
         handleBlur={handleBlur}

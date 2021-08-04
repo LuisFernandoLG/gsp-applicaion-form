@@ -1,17 +1,18 @@
 import image from "../../img/cameraPhoto.svg";
 import styled from "styled-components";
 import { Wrapper } from "../Wrapper";
+import { useEffect } from "react";
 //
 export const ProfileImageInput = ({
   name,
   value,
-  handleChangeFiles,
   placeHolder,
   errors,
+  handleChangeFiles,
 }) => {
   const handleFileSelected = (e) => {
     const reader = new FileReader();
-    reader.addEventListener("load", (e) => {
+    reader.addEventListener("load", (_) => {
       handleChangeFiles({ name, value: reader.result });
     });
 
