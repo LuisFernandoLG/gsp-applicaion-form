@@ -25,6 +25,7 @@ const ApplicantCardStyled = styled(Wrapper)`
   width: 100%;
   padding: 1rem;
   border-radius: 1rem;
+  height: 16rem;
 
   img,
   figcaption {
@@ -37,7 +38,7 @@ const ApplicantCardStyled = styled(Wrapper)`
   .image-profile {
     border-radius: 1rem;
     overflow: hidden;
-    flex-basis: 14rem;
+    flex-basis: 80%;
 
     img {
       object-fit: cover;
