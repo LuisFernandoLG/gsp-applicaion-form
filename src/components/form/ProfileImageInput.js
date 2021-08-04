@@ -1,8 +1,7 @@
 import image from "../../img/cameraPhoto.svg";
 import styled from "styled-components";
 import { Wrapper } from "../Wrapper";
-import { useEffect } from "react";
-//
+
 export const ProfileImageInput = ({
   name,
   value,

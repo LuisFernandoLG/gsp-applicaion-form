@@ -217,7 +217,7 @@ export const useMainForm = () => {
       },
       body: JSON.stringify({ ...form, ...files }),
     };
-    fetch("http://localhost:8000/form", options)
+    fetch("https://backend-gsp.herokuapp.com/form", options)
       .then((response) =>
         !response.ok ? new Promise.reject("Algo salió mal") : response.json()
       )

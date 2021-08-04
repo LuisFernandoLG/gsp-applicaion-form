@@ -13,7 +13,7 @@ const ApplicationsPage = () => {
 
   useEffect(() => {
     const fetchAppForms = async () => {
-      const appForms = await get("http://localhost:8000/forms");
+      const appForms = await get("https://backend-gsp.herokuapp.com/forms");
       setApplicants(appForms || []);
     };
     fetchAppForms();
