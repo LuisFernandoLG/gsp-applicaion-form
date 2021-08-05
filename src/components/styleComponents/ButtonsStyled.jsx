@@ -1,7 +1,8 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
-const buttonStyled = styled.button.attrs({type:"button"})`
+export const buttonStyled = styled.button.attrs({type:"button"})`
   border-radius: 1rem;
+ 
 `;
 
 export const AddButtonStyled = styled(buttonStyled)`
@@ -24,13 +25,9 @@ export const DeleteButton = styled(buttonStyled)`
   padding: 0.9375rem 1.5625rem;
 `;
 
-export const SubmitButton = styled(buttonStyled).attrs({type:"submit"})`
-  padding: 1.5rem 2.5rem;
-  font-size: 1rem;
-  font-weight: 600;
-  color: ${({ theme: { colors } }) => colors.primaryColor};
-  background: ${({ theme: { colors } }) => colors.color1};
-`;
+
+
+
 
 
 export const NavigationBarButton = styled(buttonStyled)`

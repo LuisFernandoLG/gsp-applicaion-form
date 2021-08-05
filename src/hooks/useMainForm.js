@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { generate } from "shortid";
 import { routes } from "../helpers/routes";
+import { useFetch } from "./useFetch";
 
 const initialForm = {
   personalInfoName: "",
@@ -87,6 +88,7 @@ export const useMainForm = () => {
   const [form, setForm] = useState(initialForm);
   const [files, setFiles] = useState(initialLocalStorageFiles);
   const [errors, setErrors] = useState({});
+  const { post, isLoading } = useFetch();
   let history = useHistory();
 
   const handleError = (e) => {
@@ -209,30 +211,28 @@ export const useMainForm = () => {
     localStorage.setItem("gspFiles", JSON.stringify(initialFiles));
   };
 
-  const sendForm = () => {
+  const sendForm = async () => {
     const options = {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ ...form, ...files }),
+      body: { ...form, ...files },
     };
-    fetch("https://backend-gsp.herokuapp.com/form", options)
-      .then((response) =>
-        !response.ok ? new Promise.reject("Algo salió mal") : response.json()
-      )
-      .then((json) => {
-        console.log(json);
-        if (json.status === "202") {
-          cleanForm();
-          history.push(routes.SUCCESS_PAGE);
-        } else {
-          alert("Algo no salió bien");
-        }
-      })
-      .catch((error) => {
-        alert("Algo no salió bien ERRORES");
-      });
+
+    const response = await post(
+      "https://backend-gsp.herokuapp.com/form",
+      options
+    );
+
+    if (response.status === "202") {
+      console.log("FELICIDADES");
+    } else {
+      console.log("Ha habido algun error");
+    }
+
+    console.log(response);
+    console.log(isLoading);
   };
 
   const handleSubmit = async (e) => {
@@ -257,5 +257,6 @@ export const useMainForm = () => {
     handleBlur,
     handleChangeFiles,
     files,
+    isLoading,
   };
 };

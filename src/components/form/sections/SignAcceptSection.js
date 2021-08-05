@@ -2,21 +2,37 @@ import { SectionForm } from "../../styleComponents/SectionForm";
 import { SubSectionForm } from "../../styleComponents/SubSectionForm";
 import PrivacyPolicy from "../../PrivacyPolicy";
 import { RadioGroupForm } from "../RadioGroupForm";
-import { Wrapper } from "../../Wrapper";
-import { SubmitButton } from "../../styleComponents/ButtonsStyled";
+import { buttonStyled } from "../../styleComponents/ButtonsStyled";
 import styled from "styled-components";
 import promisePerson from "../../../img/promise.svg";
 import { NavLink } from "react-router-dom";
 import { routes } from "../../../helpers/routes";
+import { useEffect, useRef, useState } from "react";
+import Modal from "../../Modal";
 
 export const SignAcceptSection = ({
   form,
   handleChange,
   handleBlur,
   errors,
+  isLoading,
 }) => {
+  const submitBtnRef = useRef(null);
+  const [open, setOpen] = useState(true);
+
+  const openModal = () => setOpen(true);
+  const closeModal = () => setOpen(false);
+
+  useEffect(() => {
+    if (isLoading) submitBtnRef.current.setAttribute("disabled", "true");
+    else submitBtnRef.current.removeAttribute("disabled");
+  }, [isLoading]);
+
   return (
     <>
+      <Modal closeModal={closeModal} open={open}>
+        <p>Holis</p>
+      </Modal>
       <SectionForm flex directionColumn>
         <h2>Responsabilidad y firma</h2>
 
@@ -61,9 +77,9 @@ export const SignAcceptSection = ({
           <img src={promisePerson} alt="promise accept" />
         </PromisePersonImage>
         <PrivacyPolicy />
-        <Wrapper flex justifyContent="center" alignItems="center">
-          <SubmitButton>Envíar</SubmitButton>
-        </Wrapper>
+        <SubmitButton ref={submitBtnRef}>
+          {isLoading ? "Enviando..." : "Envíar"}
+        </SubmitButton>
       </SectionForm>
     </>
   );
@@ -86,5 +102,21 @@ const PublicImageText = styled.p`
   a {
     font-weight: 800;
     color: ${({ theme: { colors } }) => colors.secondaryColor};
+  }
+`;
+
+const SubmitButton = styled(buttonStyled).attrs({ type: "submit" })`
+  padding: 1.5rem 2.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: ${({ theme: { colors } }) => colors.primaryColor};
+  background: ${({ theme: { colors } }) => colors.color1};
+  position: relative;
+
+  margin: 0 auto;
+
+  &:disabled {
+    color: ${({ theme: { colors } }) => colors.tertiaryColor};
+    background: ${({ theme: { colors } }) => colors.primaryColor};
   }
 `;

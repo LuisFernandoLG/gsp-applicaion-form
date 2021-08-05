@@ -15,6 +15,7 @@ export const MainForm = () => {
     handleDeleteFromListElements,
     handleBlur,
     errors,
+    isLoading,
     handleChangeFiles,
   } = useMainForm();
 
@@ -40,6 +41,7 @@ export const MainForm = () => {
           numSectionForm={numSectionForm}
           form={form}
           files={files}
+          isLoading={isLoading}
           errors={errors}
           handleChange={handleChange}
           handleBlur={handleBlur}
