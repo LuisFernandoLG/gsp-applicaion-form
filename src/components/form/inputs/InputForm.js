@@ -34,7 +34,10 @@ export const InputForm = ({
 };
 
 const InputStyled = styled.div`
-  box-shadow: ${({ theme: { colors } }) => colors.boxShadowLight};
+  box-shadow: ${({ theme: { colors }, errors }) =>
+    errors
+      ? (errors.error && colors.boxShadowError) || colors.boxShadowLight
+      : colors.boxShadowLight};
   padding: 2rem 0 1rem 1rem;
   border-radius: 1rem;
   cursor: pointer;

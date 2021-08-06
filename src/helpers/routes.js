@@ -3,4 +3,5 @@ export const routes = {
   FORM_PAGE: "/form",
   APPLICATIONS_PAGE: "/applications",
   SUCCESS_PAGE: "/success",
+  NOT_FOUND_PAGE: "*",
 };

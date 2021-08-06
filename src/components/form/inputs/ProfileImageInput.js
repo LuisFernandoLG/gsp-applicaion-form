@@ -50,7 +50,10 @@ const PhotoPreview = styled(Wrapper)`
 
 const ProfileImageInputStyled = styled(Wrapper)`
   grid-column: 1 / -1;
-  box-shadow: ${({ theme: { colors } }) => colors.boxShadowLight};
+  box-shadow: ${({ theme: { colors }, errors }) =>
+    errors
+      ? (errors.error && colors.boxShadowError) || colors.boxShadowLight
+      : colors.boxShadowLight};
   padding: 1.2rem;
 
   label {

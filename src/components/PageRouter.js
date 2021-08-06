@@ -4,6 +4,7 @@ import NavBar from "./NavBar";
 import ApplicationsPage from "./routes/ApplicationsPage";
 import FormPage from "./routes/FormPage";
 import HomePage from "./routes/HomePage";
+import PageNotFoundPage from "./routes/PageNotFoundPage";
 import SuccessPage from "./routes/SuccessPage";
 
 export const PageRouter = () => {
@@ -14,7 +15,7 @@ export const PageRouter = () => {
         <Route path={routes.FORM_PAGE} component={FormPage} />
         <Route path={routes.APPLICATIONS_PAGE} component={ApplicationsPage} />
         <Route exact path={routes.HOME_PAGE} component={HomePage} />
-        <Route exact path={routes.SUCCEDD_PAGE} component={SuccessPage} />
+        <Route path={routes.NOT_FOUND_PAGE} component={PageNotFoundPage} />
       </Switch>
     </Router>
   );

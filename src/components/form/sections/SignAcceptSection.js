@@ -19,10 +19,6 @@ export const SignAcceptSection = ({
   isLoading,
 }) => {
   const submitBtnRef = useRef(null);
-  const [open, setOpen] = useState(true);
-
-  const openModal = () => setOpen(true);
-  const closeModal = () => setOpen(false);
 
   useEffect(() => {
     if (isLoading) submitBtnRef.current.setAttribute("disabled", "true");

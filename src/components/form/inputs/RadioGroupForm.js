@@ -41,7 +41,10 @@ export const RadioGroupForm = ({
 };
 
 const RadioGroupFormStyled = styled(Wrapper)`
-  box-shadow: 0 0.625rem 1.875rem -1.25rem gray;
+  box-shadow: ${({ theme: { colors }, errors }) =>
+    errors
+      ? (errors.error && colors.boxShadowError) || colors.boxShadowLight
+      : colors.boxShadowLight};
   padding: 0.5rem 0 1rem 0.5rem;
   border-radius: 1rem;
   position: relative;

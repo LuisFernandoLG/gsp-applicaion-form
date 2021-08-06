@@ -15,6 +15,9 @@ export const GlobalStyles = createGlobalStyle`
         max-width: 1400px;
         margin: 0 auto;
         margin-bottom: 5.125rem;
+
+        /* background: ${({ theme: { colors } }) => colors.primaryColor}; */
+        
     }
     
     

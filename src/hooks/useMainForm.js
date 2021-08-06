@@ -230,6 +230,9 @@ export const useMainForm = () => {
   const cleanForm = () => {
     localStorage.setItem("gspForm", JSON.stringify(initialForm));
     localStorage.setItem("gspFiles", JSON.stringify(initialFiles));
+
+    setForm(initialForm);
+    setFiles(initialFiles);
   };
 
   const sendForm = async () => {
@@ -249,6 +252,7 @@ export const useMainForm = () => {
     if (response) {
       if (response.status === "202") {
         setInfoModal(congratulationsModalMessage);
+        cleanForm();
       }
     } else {
       setInfoModal(errorModalMessage);

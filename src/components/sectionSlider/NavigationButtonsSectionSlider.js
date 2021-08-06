@@ -1,5 +1,4 @@
-import styled from "styled-components";
-import { NavigationBarButton } from "../styleComponents/ButtonsStyled";
+import { PrimaryButton } from "../styleComponents/ButtonsStyled";
 import { Wrapper } from "../Wrapper";
 
 export const NavigationButtonsSectionSlider = ({
@@ -12,15 +11,11 @@ export const NavigationButtonsSectionSlider = ({
     <>
       <Wrapper flex justifyContent="space-evenly">
         {numSection > 0 && (
-          <NavigationBarButton onClick={goPrevSection}>
-            Regresar
-          </NavigationBarButton>
+          <PrimaryButton onClick={goPrevSection}>Regresar</PrimaryButton>
         )}
 
         {numSection < totalSections && (
-          <NavigationBarButton onClick={goNextSection}>
-            Siguiente
-          </NavigationBarButton>
+          <PrimaryButton onClick={goNextSection}>Siguiente</PrimaryButton>
         )}
       </Wrapper>
     </>
