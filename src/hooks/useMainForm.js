@@ -231,7 +231,7 @@ export const useMainForm = () => {
     );
 
     if (response) {
-      if (response.status === "202") {
+      if (response.status === "201") {
         openModal(messagesStatusCode[201]);
         cleanForm();
       }
@@ -244,7 +244,9 @@ export const useMainForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    openModal(messagesStatusCode[201]);
+    if (!checkAllAnswers()) return openModal(uncompletedFormModalMessage);
+
+    sendForm();
   };
 
   const handleBlur = (e) => {
