@@ -1,6 +1,6 @@
-import image from "../../img/cameraPhoto.svg";
+import image from "../../../img/cameraPhoto.svg";
 import styled from "styled-components";
-import { Wrapper } from "../Wrapper";
+import { Wrapper } from "../../Wrapper";
 
 export const ProfileImageInput = ({
   name,

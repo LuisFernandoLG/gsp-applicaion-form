@@ -43,14 +43,12 @@ export default CongratulationsCard;
 
 const ThankfullText = styled.p`
   text-align: center;
-  max-width: 37.5rem;
+  max-width: 37.5em;
 
   line-height: 2;
 
   span {
     padding: 0.3125rem 0.625rem;
-    /* margin: 0 2px; */
-    /* border-radius: 1rem; */
     background: ${({ theme: { colors } }) => colors.secondaryColor};
     color: ${({ theme: { colors } }) => colors.primaryColor};
   }

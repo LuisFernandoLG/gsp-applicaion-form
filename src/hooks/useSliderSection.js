@@ -1,26 +1,11 @@
 import { useEffect, useState } from "react";
-import { AcademicBackgroundSection } from "../components/form/sections/AcademicBackgroundSection";
-import { EconomicStatusSection } from "../components/form/sections/EconomicStatusSection";
-import { ExtracurricularSection } from "../components/form/sections/ExtracurricularSection";
-import { FatherSection } from "../components/form/sections/FatherSection";
-import { MotherSection } from "../components/form/sections/MotherSection";
-import { PersonalSection } from "../components/form/sections/PersonalSection";
-import { SignAcceptSection } from "../components/form/sections/SignAcceptSection";
 
-const initialSections = [
-  PersonalSection,
-  FatherSection,
-  MotherSection,
-  AcademicBackgroundSection,
-  EconomicStatusSection,
-  ExtracurricularSection,
-  SignAcceptSection,
-];
+export const useSliderSection = (initialSections, numSectionInit = 0) => {
+  const [numSectionForm, setNumSectionForm] = useState(numSectionInit);
 
-const totalSections = initialSections.length - 1;
-
-export const useSliderSection = () => {
-  const [numSectionForm, setNumSectionForm] = useState(0);
+  const [totalSections, setTotalSections] = useState(
+    initialSections.length - 1
+  );
 
   const goNextSectionForm = () => {
     numSectionForm < totalSections && setNumSectionForm(numSectionForm + 1);
@@ -43,7 +28,7 @@ export const useSliderSection = () => {
     goPrevSectionForm,
     goSpecificSectionForm,
     totalSections,
-    initialSections,
+    currentSection: initialSections[numSectionForm],
     numSectionForm,
   };
 };

@@ -1,16 +1,15 @@
 import reactDom from "react-dom";
 import styled from "styled-components";
-import { buttonStyled } from "./styleComponents/ButtonsStyled";
-import { Wrapper } from "./Wrapper";
+import { buttonStyled } from "../styleComponents/ButtonsStyled";
+import { Wrapper } from "../Wrapper";
 import { FaTimes } from "react-icons/fa";
-import { useRef } from "react";
 
 const Modal = ({ children, closeModal, open }) => {
   if (!open) return null;
 
   return reactDom.createPortal(
     <>
-      <Background class="background" onClick={closeModal} />
+      <Background className="background" onClick={closeModal} />
       <ModalWrapper
         flex
         directionColumn
@@ -45,7 +44,10 @@ const CloseBtn = styled(buttonStyled)`
   padding: 0.7rem;
 `;
 
-const Content = styled(Wrapper)``;
+const Content = styled(Wrapper)`
+  padding: 1.25rem;
+  height: 100%;
+`;
 
 const Background = styled.div`
   position: fixed;
@@ -69,6 +71,8 @@ const ModalWrapper = styled(Wrapper)`
 
   left: 10%;
   right: 10%;
+
+  padding: 10px;
 
   /* cursor: pointer; */
 

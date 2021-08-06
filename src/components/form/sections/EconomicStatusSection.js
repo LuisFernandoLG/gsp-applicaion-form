@@ -1,8 +1,8 @@
 import { SectionForm } from "../../styleComponents/SectionForm";
 import { SubSectionForm } from "../../styleComponents/SubSectionForm";
 
-import { InputForm } from "../InputForm";
-import { RadioGroupForm } from "../RadioGroupForm";
+import { InputForm } from "../inputs/InputForm";
+import { RadioGroupForm } from "../inputs/RadioGroupForm";
 
 export const EconomicStatusSection = ({
   form,

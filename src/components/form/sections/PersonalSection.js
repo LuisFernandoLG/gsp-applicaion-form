@@ -1,10 +1,9 @@
 import { SectionForm } from "../../styleComponents/SectionForm";
 import { SubSectionForm } from "../../styleComponents/SubSectionForm";
 
-import { RadioGroupForm } from "../RadioGroupForm";
-import { ProfileImageInput } from "../ProfileImageInput";
-
-import { InputForm } from "../InputForm";
+import { InputForm } from "../inputs/InputForm";
+import { RadioGroupForm } from "../inputs/RadioGroupForm";
+import { ProfileImageInput } from "../inputs/ProfileImageInput";
 export const PersonalSection = ({
   form,
   files,

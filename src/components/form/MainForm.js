@@ -1,8 +1,24 @@
-import styled from "styled-components";
-import { Wrapper } from "../Wrapper";
 import { useMainForm } from "../../hooks/useMainForm";
-import SectionSlider from "./SectionSlider";
-import { useSliderSection } from "../../hooks/useSliderSection";
+import SectionSlider from "../sectionSlider/SectionSlider";
+import { AcademicBackgroundSection } from "../form/sections/AcademicBackgroundSection";
+import { EconomicStatusSection } from "../form/sections/EconomicStatusSection";
+import { ExtracurricularSection } from "../form/sections/ExtracurricularSection";
+import { FatherSection } from "../form/sections/FatherSection";
+import { MotherSection } from "../form/sections/MotherSection";
+import { PersonalSection } from "../form/sections/PersonalSection";
+import { SignAcceptSection } from "../form/sections/SignAcceptSection";
+import { SuccessModal } from "../modals/SuccessModal";
+import { useEffect, useState } from "react";
+
+const initialSections = [
+  PersonalSection,
+  FatherSection,
+  MotherSection,
+  AcademicBackgroundSection,
+  EconomicStatusSection,
+  ExtracurricularSection,
+  SignAcceptSection,
+];
 
 export const MainForm = () => {
   const {
@@ -17,51 +33,47 @@ export const MainForm = () => {
     errors,
     isLoading,
     handleChangeFiles,
+    saveFilesLocalStorage,
+    infoModal,
   } = useMainForm();
 
-  const {
-    goNextSectionForm,
-    goPrevSectionForm,
-    goSpecificSectionForm,
-    totalSections,
-    initialSections,
-    numSectionForm,
-  } = useSliderSection();
+  const [isOpenModal, setIsOpenModal] = useState(false);
+
+  const openModal = () => setIsOpenModal(true);
+  const closeModal = () => setIsOpenModal(false);
+
+  useEffect(() => {
+    if (infoModal) openModal();
+  }, [infoModal]);
 
   return (
-    <FormStyled onSubmit={handleSubmit}>
-      <Sections>
+    <>
+      <form onSubmit={handleSubmit}>
         <SectionSlider
-          handleChangeFiles={handleChangeFiles}
-          goSpecificSectionForm={goSpecificSectionForm}
-          totalSections={totalSections}
-          goNextSectionForm={goNextSectionForm}
-          goPrevSectionForm={goPrevSectionForm}
-          SectionForm={initialSections[numSectionForm]}
-          numSectionForm={numSectionForm}
+          initialSections={initialSections}
           form={form}
           files={files}
-          isLoading={isLoading}
+          handleChangeFiles={handleChangeFiles}
+          saveFilesLocalStorage={saveFilesLocalStorage}
           errors={errors}
           handleChange={handleChange}
           handleBlur={handleBlur}
           handleDeleteFromListElements={handleDeleteFromListElements}
           addNewListElements={addNewListElements}
           handleChangeListElements={handleChangeListElements}
+          isLoading={isLoading}
         />
-      </Sections>
-    </FormStyled>
+      </form>
+
+      {isOpenModal && (
+        <SuccessModal
+          closeModal={closeModal}
+          open={isOpenModal}
+          img={infoModal.img}
+          title={infoModal.title}
+          content={infoModal.content}
+        />
+      )}
+    </>
   );
 };
-
-const FormStyled = styled.form`
-  /* margin-top: 3.125rem; */
-`;
-
-const Sections = styled(Wrapper)`
-  h2 {
-    text-align: center;
-    font-size: 30px;
-    width: 100%;
-  }
-`;

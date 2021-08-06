@@ -1,14 +1,15 @@
 import { SectionForm } from "../../styleComponents/SectionForm";
+import partyImage from "../../../img/party.svg";
 import { SubSectionForm } from "../../styleComponents/SubSectionForm";
+
 import PrivacyPolicy from "../../PrivacyPolicy";
-import { RadioGroupForm } from "../RadioGroupForm";
+import { RadioGroupForm } from "../inputs/RadioGroupForm";
 import { buttonStyled } from "../../styleComponents/ButtonsStyled";
 import styled from "styled-components";
 import promisePerson from "../../../img/promise.svg";
 import { NavLink } from "react-router-dom";
 import { routes } from "../../../helpers/routes";
 import { useEffect, useRef, useState } from "react";
-import Modal from "../../Modal";
 
 export const SignAcceptSection = ({
   form,
@@ -30,9 +31,6 @@ export const SignAcceptSection = ({
 
   return (
     <>
-      <Modal closeModal={closeModal} open={open}>
-        <p>Holis</p>
-      </Modal>
       <SectionForm flex directionColumn>
         <h2>Responsabilidad y firma</h2>
 

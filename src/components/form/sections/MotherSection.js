@@ -1,7 +1,7 @@
 import { SectionForm } from "../../styleComponents/SectionForm";
 import { SubSectionForm } from "../../styleComponents/SubSectionForm";
 
-import { InputForm } from "../InputForm";
+import { InputForm } from "../inputs/InputForm";
 export const MotherSection = ({ form, handleChange, handleBlur, errors }) => {
   return (
     <SectionForm flex directionColumn>
