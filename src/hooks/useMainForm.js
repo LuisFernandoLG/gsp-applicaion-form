@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import { generate } from "shortid";
+import { uncompletedFormModalMessage } from "../helpers/messages/messagesApp";
+import messagesStatusCode from "../helpers/messages/messagesStatusCode";
+
 import { useFetch } from "./useFetch";
-// import partyImage from "../../img/party.svg";
-import partyImage from "../img/party.svg";
-import errorImage from "../img/notFound.svg";
-import FormImageRed from "../img/FormImageRed.svg";
 
 const initialForm = {
   personalInfoName: "",
@@ -92,6 +91,7 @@ export const useMainForm = () => {
   const [errors, setErrors] = useState({});
   const { post, isLoading } = useFetch();
   const [infoModal, setInfoModal] = useState(null);
+  const [isOpenModal, setIsOpenModal] = useState(false);
 
   const handleError = (e) => {
     const { name, value } = e.target;
@@ -208,25 +208,6 @@ export const useMainForm = () => {
     });
   };
 
-  const congratulationsModalMessage = {
-    title: "Felicidades",
-    content:
-      "Tu solicitud ha sido recibida, ahora solo queda esperar los resultados que se publicarán en nuestra",
-    img: partyImage,
-  };
-
-  const errorModalMessage = {
-    title: "¡Oh no!",
-    content: "Algo salió mal, intentalo nuevamente por favor",
-    img: errorImage,
-  };
-
-  const uncompletedFormModalMessage = {
-    title: "Campos incompletos",
-    content: "Llena todos los campos requeridos por favor.",
-    img: FormImageRed,
-  };
-
   const cleanForm = () => {
     localStorage.setItem("gspForm", JSON.stringify(initialForm));
     localStorage.setItem("gspFiles", JSON.stringify(initialFiles));
@@ -251,11 +232,11 @@ export const useMainForm = () => {
 
     if (response) {
       if (response.status === "202") {
-        setInfoModal(congratulationsModalMessage);
+        openModal(messagesStatusCode[201]);
         cleanForm();
       }
     } else {
-      setInfoModal(errorModalMessage);
+      openModal(messagesStatusCode[99999]);
     }
 
     console.log(response);
@@ -263,13 +244,18 @@ export const useMainForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!checkAllAnswers()) setInfoModal(uncompletedFormModalMessage);
-    else sendForm();
+    openModal(messagesStatusCode[201]);
   };
 
   const handleBlur = (e) => {
     handleError(e);
     saveFormLocalStorage();
+  };
+
+  const closeModal = () => setIsOpenModal(false);
+  const openModal = (message) => {
+    setInfoModal(message);
+    setIsOpenModal(true);
   };
 
   return {
@@ -285,5 +271,8 @@ export const useMainForm = () => {
     files,
     isLoading,
     infoModal,
+    isOpenModal,
+    closeModal,
+    openModal,
   };
 };

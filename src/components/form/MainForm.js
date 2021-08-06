@@ -8,8 +8,6 @@ import { MotherSection } from "../form/sections/MotherSection";
 import { PersonalSection } from "../form/sections/PersonalSection";
 import { SignAcceptSection } from "../form/sections/SignAcceptSection";
 import { SuccessModal } from "../modals/SuccessModal";
-import { useEffect, useState } from "react";
-
 const initialSections = [
   PersonalSection,
   FatherSection,
@@ -35,16 +33,9 @@ export const MainForm = () => {
     handleChangeFiles,
     saveFilesLocalStorage,
     infoModal,
+    closeModal,
+    isOpenModal,
   } = useMainForm();
-
-  const [isOpenModal, setIsOpenModal] = useState(false);
-
-  const openModal = () => setIsOpenModal(true);
-  const closeModal = () => setIsOpenModal(false);
-
-  useEffect(() => {
-    if (infoModal) openModal();
-  }, [infoModal]);
 
   return (
     <>

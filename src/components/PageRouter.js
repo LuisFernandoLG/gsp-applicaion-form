@@ -5,7 +5,6 @@ import ApplicationsPage from "./routes/ApplicationsPage";
 import FormPage from "./routes/FormPage";
 import HomePage from "./routes/HomePage";
 import PageNotFoundPage from "./routes/PageNotFoundPage";
-import SuccessPage from "./routes/SuccessPage";
 
 export const PageRouter = () => {
   return (

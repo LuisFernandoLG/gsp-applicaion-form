@@ -45,8 +45,9 @@ const CloseBtn = styled(buttonStyled)`
 `;
 
 const Content = styled(Wrapper)`
-  padding: 1.25rem;
-  height: 100%;
+  padding: 2rem 1rem;
+  /* margin: 1rem 0; */
+  /* height: 100%; */
 `;
 
 const Background = styled.div`
@@ -60,7 +61,7 @@ const Background = styled.div`
   height: 100%;
 
   filter: blur(100px);
-  /* background: ${({ theme: { colors } }) => colors.primaryColor}; */
+  background: ${({ theme: { colors } }) => colors.primaryColor};
 `;
 
 const ModalWrapper = styled(Wrapper)`
@@ -71,10 +72,8 @@ const ModalWrapper = styled(Wrapper)`
 
   left: 10%;
   right: 10%;
-
-  padding: 10px;
-
-  /* cursor: pointer; */
+  height: min-content;
+  max-height: 70%;
 
   border-radius: 1rem;
   background: ${({ theme: { colors } }) => colors.primaryColor};

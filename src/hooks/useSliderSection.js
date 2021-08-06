@@ -3,9 +3,7 @@ import { useEffect, useState } from "react";
 export const useSliderSection = (initialSections, numSectionInit = 0) => {
   const [numSectionForm, setNumSectionForm] = useState(numSectionInit);
 
-  const [totalSections, setTotalSections] = useState(
-    initialSections.length - 1
-  );
+  const totalSections = initialSections.length - 1;
 
   const goNextSectionForm = () => {
     numSectionForm < totalSections && setNumSectionForm(numSectionForm + 1);

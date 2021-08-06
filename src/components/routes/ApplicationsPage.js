@@ -49,21 +49,6 @@ const ApplicationsPage = () => {
             )
           )}
 
-        {/* {applicants
-          ? applicants.map((item) => {
-              return (
-                <Code>
-                  {" "}
-                  {JSON.stringify(
-                    { ...item, personalInfoPhoto: "" },
-                    undefined,
-                    4
-                  )}{" "}
-                </Code>
-              );
-            })
-          : null} */}
-
         {!isLoading && !errors && applicants.length === 0 ? (
           <MainMessage>No hay ninguna solicitudes :(</MainMessage>
         ) : (
@@ -93,8 +78,3 @@ const MainMessage = styled.p`
 `;
 
 export default ApplicationsPage;
-
-const Code = styled.p`
-  grid-column: 1 / -1;
-  width: 60%;
-`;

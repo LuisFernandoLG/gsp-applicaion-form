@@ -53,7 +53,7 @@ const ProfileImageInputStyled = styled(Wrapper)`
   box-shadow: ${({ theme: { colors }, errors }) =>
     errors
       ? (errors.error && colors.boxShadowError) || colors.boxShadowLight
-      : colors.boxShadowLight};
+      : colors.boxShadowLight}; 
   padding: 1.2rem;
 
   label {

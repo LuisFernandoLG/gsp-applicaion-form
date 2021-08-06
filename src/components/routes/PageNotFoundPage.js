@@ -1,10 +1,7 @@
 import { useHistory } from "react-router-dom";
 import { routes } from "../../helpers/routes";
 import notFoundImg from "../../img/notFound.svg";
-import {
-  PrimaryButton,
-  SecondaryButton,
-} from "../styleComponents/ButtonsStyled";
+import { PrimaryButton } from "../styleComponents/ButtonsStyled";
 import { Wrapper } from "../Wrapper";
 
 const PageNotFoundPage = () => {
@@ -16,7 +13,6 @@ const PageNotFoundPage = () => {
     <Wrapper flex directionColumn justifyContent="center" alignItems="center">
       <img src={notFoundImg} alt="not found" />
       <h3>¿Estás perdido?</h3>
-      {/* <SecondaryButton onClick={goToHome}>Volver al inicio</SecondaryButton> */}
       <PrimaryButton onClick={goToHome}>Volver al inicio</PrimaryButton>
     </Wrapper>
   );

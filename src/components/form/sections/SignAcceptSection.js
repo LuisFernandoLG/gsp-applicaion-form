@@ -1,5 +1,5 @@
 import { SectionForm } from "../../styleComponents/SectionForm";
-import partyImage from "../../../img/party.svg";
+
 import { SubSectionForm } from "../../styleComponents/SubSectionForm";
 
 import PrivacyPolicy from "../../PrivacyPolicy";
@@ -9,7 +9,7 @@ import styled from "styled-components";
 import promisePerson from "../../../img/promise.svg";
 import { NavLink } from "react-router-dom";
 import { routes } from "../../../helpers/routes";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 export const SignAcceptSection = ({
   form,

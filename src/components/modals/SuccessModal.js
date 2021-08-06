@@ -1,18 +1,18 @@
 import styled from "styled-components";
-import {
-  breakpointDown,
-  breakpointUp,
-} from "../styleComponents/ResponsiveStyle";
+import { breakpointUp } from "../styleComponents/ResponsiveStyle";
+import { Wrapper } from "../Wrapper";
 import Modal from "./Modal";
 
 export const SuccessModal = ({ closeModal, open, img, title, content }) => {
   return (
     <Modal closeModal={closeModal} open={open}>
-      <Title>{title}</Title>
-      <ImageWrapper>
-        <img src={img} />
-      </ImageWrapper>
-      <Content>{content}</Content>
+      <Wrapper flex directionColumn gap="1rem" justifyContent="center">
+        <Title>{title}</Title>
+        <ImageWrapper>
+          <img src={img} alt="gsp modal" />
+        </ImageWrapper>
+        <Content>{content}</Content>
+      </Wrapper>
     </Modal>
   );
 };
@@ -22,21 +22,19 @@ const Title = styled.h2`
 `;
 
 const ImageWrapper = styled.div`
-  margin: 2rem auto;
-
-  ${breakpointUp("medium", "height: 30%;")}
-
-  height: 55%;
+  /* flex-basis: 50%; */
+  margin: 0 auto;
   img {
-    width: 100%;
-    height: 100%;
+    width: 90%;
+    height: 90%;
   }
 `;
 
 const Content = styled.p`
   text-align: center;
-  max-width: 100%;
+
   line-height: 2;
+  font-size: 1.2rem;
 
   span {
     padding: 0.3125rem 0.625rem;
