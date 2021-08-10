@@ -29,15 +29,12 @@ export const InputForm = ({
       />
       <label htmlFor={name}>{placeHolder}</label>
       <div className="bar"></div>
+      {errors && <p className="error">{errors}</p>}
     </InputStyled>
   );
 };
 
 const InputStyled = styled.div`
-  box-shadow: ${({ theme: { colors }, errors }) =>
-    errors
-      ? (errors.error && colors.boxShadowError) || colors.boxShadowLight
-      : colors.boxShadowLight};
   padding: 2rem 0 1rem 1rem;
   border-radius: 1rem;
   cursor: pointer;
@@ -51,6 +48,9 @@ const InputStyled = styled.div`
 
   height: min-content;
 
+  box-shadow: ${({ theme: { colors }, errors }) =>
+    errors ? colors.boxShadowError : colors.boxShadowLight};
+
   input {
     width: 95%;
     margin-right: auto;
@@ -58,7 +58,7 @@ const InputStyled = styled.div`
     font-size: 1rem;
     color: ${({ theme: { colors } }) => colors.color2};
     font-weight: 400;
-    padding: 10px 0 0px 0;
+    padding: 10px 0 0 0;
   }
 
   label {
@@ -68,9 +68,7 @@ const InputStyled = styled.div`
     top: 50%;
     font-size: 1rem;
     color: ${({ theme: { colors }, errors }) =>
-      errors
-        ? (errors.error && colors.errorColor) || colors.tertiaryColor
-        : colors.tertiaryColor};
+      errors ? colors.errorColor : colors.tertiaryColor};
     transition: transform 0.3s ease;
   }
 
@@ -81,17 +79,20 @@ const InputStyled = styled.div`
   input:focus + label {
     transform: translateY(-120%);
 
-    color: ${({ theme: { colors } }) => colors.secondaryColor};
+    color: ${({ theme: { colors }, errors }) =>
+      errors ? colors.errorColor : colors.secondaryColor};
   }
 
   .bar {
     position: absolute;
     bottom: 0;
+    left: 0;
     width: 100%;
     height: 5px;
 
     transform: translateX(-110%);
-    background: ${({ theme: { colors } }) => colors.secondaryColor};
+    background: ${({ theme: { colors }, errors }) =>
+      errors ? colors.errorColor : colors.secondaryColor};
 
     transition: transform 0.3s ease;
     z-index: 20;
@@ -100,4 +101,25 @@ const InputStyled = styled.div`
   input:focus + label + .bar {
     transform: translateX(0%) translateY(2px);
   }
+
+  .error {
+    margin: 0 0;
+    font-size: 0.9rem;
+    color: ${({ theme: { colors } }) => colors.errorColor};
+    font-weight: 600;
+    text-align: center;
+  }
+
+  input:focus + label + div + p {
+    display: none;
+  }
+
+  /* .shadow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: red;
+    
+    z-index: -1;
+  } */
 `;

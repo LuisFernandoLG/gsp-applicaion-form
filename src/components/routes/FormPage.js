@@ -8,8 +8,4 @@ const FormPage = () => {
   );
 };
 
-// Sabes inglés
-// Años cursados secundaria
-//
-
 export default FormPage;

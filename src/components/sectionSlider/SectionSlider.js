@@ -3,7 +3,7 @@ import { NavigationNavSlider } from "./NavigationNavSectionSlider";
 import { Section } from "../form/sections/Section";
 import { NavigationButtonsSectionSlider } from "./NavigationButtonsSectionSlider";
 
-const SectionSlider = ({ initialSections, ...res }) => {
+const SectionSlider = ({ initialSections, errors, ...res }) => {
   const {
     goNextSectionForm,
     goPrevSectionForm,
@@ -19,8 +19,9 @@ const SectionSlider = ({ initialSections, ...res }) => {
         totalSections={totalSections}
         goSpecificSection={goSpecificSectionForm}
         currentNumSection={numSectionForm}
+        errors={errors}
       />
-      <Section component={currentSection} {...res} />
+      <Section component={currentSection} {...res} errors={errors} />
       <NavigationButtonsSectionSlider
         goNextSection={goNextSectionForm}
         goPrevSection={goPrevSectionForm}

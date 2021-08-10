@@ -33,6 +33,7 @@ export const ProfileImageInput = ({
         id="image-profile"
         onChange={handleFileSelected}
       />
+      <p className="error">{errors}</p>
     </ProfileImageInputStyled>
   );
 };
@@ -51,9 +52,7 @@ const PhotoPreview = styled(Wrapper)`
 const ProfileImageInputStyled = styled(Wrapper)`
   grid-column: 1 / -1;
   box-shadow: ${({ theme: { colors }, errors }) =>
-    errors
-      ? (errors.error && colors.boxShadowError) || colors.boxShadowLight
-      : colors.boxShadowLight}; 
+    errors ? colors.boxShadowError : colors.boxShadowLight};
   padding: 1.2rem;
 
   label {
@@ -76,13 +75,17 @@ const ProfileImageInputStyled = styled(Wrapper)`
       font-weight: 600;
 
       color: ${({ theme: { colors }, errors }) =>
-        errors
-          ? (errors.error && colors.errorColor) || colors.tertiaryColor
-          : colors.tertiaryColor};
+        errors ? colors.errorColor : colors.tertiaryColor};
     }
   }
 
   input {
     display: none;
+  }
+
+  .error {
+    color: ${({ theme: { colors } }) => colors.errorColor};
+    font-weight: 600;
+    text-align: center;
   }
 `;

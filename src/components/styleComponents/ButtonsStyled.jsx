@@ -1,8 +1,9 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const buttonStyled = styled.button.attrs({type:"button"})`
   border-radius: 1rem;
   padding: 1.2em 1.2em;
+  
 `;
 
 export const AddButtonStyled = styled(buttonStyled)`
@@ -33,9 +34,16 @@ export const DeleteButton = styled(buttonStyled)`
 export const NavigationBarButton = styled(buttonStyled)`
   padding: 1.2em 1.5em;
 
+
+
   margin: 1.875em auto;
   color: ${({ theme: { colors } }) => colors.primaryColor};
   background: ${({ theme: { colors } }) => colors.secondaryColor};
+  
+  ${ ({error})=>css`
+  error && background: ${({ theme: { colors } }) => colors.errorColor};
+  ` }
+
 
   font-weight: 600;
   font-size: 1.2em;
@@ -46,9 +54,13 @@ export const SecondaryButton = styled(buttonStyled)`
   margin: 2rem auto;
   color: ${({ theme: { colors } }) => colors.tertiaryColor};
   background: ${({ theme: { colors } }) => colors.primaryColor};
+  ${ ({error})=> error && css`background: ${({ theme: { colors } }) => colors.errorColor}};
+  color: ${({ theme: { colors } }) => colors.primaryColor};
+` }
   
   font-weight: 800;
   font-size: 1.2em;
+  
   `;
 
 
@@ -57,7 +69,10 @@ margin: 0.625rem auto;
 color: ${({ theme: { colors } }) => colors.primaryColor};
 background: ${({ theme: { colors } }) => colors.secondaryColor};
 
+${ ({error})=> error && css`background: ${({ theme: { colors } }) => colors.errorColor}};
+  ` }
+
 font-weight: 700;
 font-size: 1.2em;
 
-`
+`;

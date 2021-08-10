@@ -36,15 +36,14 @@ export const RadioGroupForm = ({
           );
         })}
       </Wrapper>
+      <p className="error">{errors}</p>
     </RadioGroupFormStyled>
   );
 };
 
 const RadioGroupFormStyled = styled(Wrapper)`
   box-shadow: ${({ theme: { colors }, errors }) =>
-    errors
-      ? (errors.error && colors.boxShadowError) || colors.boxShadowLight
-      : colors.boxShadowLight};
+    errors ? colors.boxShadowError : colors.boxShadowLight};
   padding: 0.5rem 0 1rem 0.5rem;
   border-radius: 1rem;
   position: relative;
@@ -74,17 +73,21 @@ const RadioGroupFormStyled = styled(Wrapper)`
     bottom: 0;
     height: 0.1875rem;
     width: 100%;
-    background: ${({ theme: { colors } }) => colors.secondaryColor};
+    background: ${({ theme: { colors }, errors }) =>
+      errors ? colors.errorColor : colors.secondaryColor};
   }
 
   h3 {
     text-align: center;
-    color: ${({ theme: { colors }, errors }) =>
-      errors
-        ? (errors.error && colors.errorColor) || colors.tertiaryColor
-        : colors.tertiaryColor};
+    color: ${({ theme: { colors } }) => colors.tertiaryColor};
   }
 
   .options {
+  }
+
+  .error {
+    color: ${({ theme: { colors } }) => colors.errorColor};
+    font-weight: 600;
+    text-align: center;
   }
 `;

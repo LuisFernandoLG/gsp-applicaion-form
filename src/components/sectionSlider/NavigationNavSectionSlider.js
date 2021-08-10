@@ -10,19 +10,40 @@ export const NavigationNavSlider = ({
   totalSections,
   goSpecificSection,
   currentNumSection,
+  errors,
 }) => {
+  const sections = [
+    errors.personalInfo,
+    errors.fatherInfo,
+    errors.motherInfo,
+    errors.academicBackground,
+    errors.economicStatus,
+    0,
+    errors.signAcceptSection,
+  ];
+
+  console.log(sections);
+
   return (
     <NavigationNavSliderStyled flex justifyContent="center">
       <Wrapper flex gap="0.5rem" wrap="true" alignContent="flex-start">
-        {Array.from(Array(totalSections + 1).keys()).map((num, index) =>
-          num === currentNumSection ? (
-            <NavigationBarButton key={index}> {num + 1} </NavigationBarButton>
+        {sections.map((item, index) => {
+          console.log(item);
+          return index === currentNumSection ? (
+            <NavigationBarButton error={item > 0} key={index}>
+              {" "}
+              {index + 1}{" "}
+            </NavigationBarButton>
           ) : (
-            <SecondaryButton key={index} onClick={() => goSpecificSection(num)}>
-              {num + 1}
+            <SecondaryButton
+              key={index}
+              error={item > 0}
+              onClick={() => goSpecificSection(index)}
+            >
+              {index + 1}
             </SecondaryButton>
-          )
-        )}
+          );
+        })}
       </Wrapper>
     </NavigationNavSliderStyled>
   );
